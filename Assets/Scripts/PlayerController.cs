@@ -10,14 +10,14 @@ public class PlayerController : MonoBehaviour {
     public float gravity;
     public Text countText;
     public Text winText;
+    public Gun gun;
 
     private Rigidbody rb;
     private Vector3 moveDirection = Vector3.zero;
     private CharacterController controller;
     private int count;
 
-    void Start ()
-    {
+    void Start () {
         controller = GetComponent<CharacterController>();
         gameObject.transform.position = new Vector3(0, 1, 0);  // Set initial position
 
@@ -27,8 +27,7 @@ public class PlayerController : MonoBehaviour {
         winText.text = "";
     }
 
-    /*void FixedUpdate ()
-    {
+    /*void FixedUpdate () {
         float moveHorizontal = Input.GetAxis ("Horizontal");
         float moveVertical = Input.GetAxis ("Vertical");
 
@@ -37,10 +36,8 @@ public class PlayerController : MonoBehaviour {
         rb.AddForce (movement * speed);
     }*/
 
-    void Update()
-    {
-        if (controller.isGrounded)
-        {
+    void Update() {
+        if (controller.isGrounded) {
             // Recalculate and move directly on axes
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
             moveDirection = transform.TransformDirection(moveDirection);
@@ -57,23 +54,25 @@ public class PlayerController : MonoBehaviour {
 
         // Move the controller
         controller.Move(moveDirection * Time.deltaTime);
+
+        if (Input.GetButtonDown("Shoot")) {
+            gun.Shoot();
+        } else if (Input.GetButton("Shoot")) {
+            gun.ShootContinuous();
+        }
     }
 
-    void OnTriggerEnter(Collider other) 
-    {
-        if (other.gameObject.CompareTag ( "Pick Up"))
-        {
+    void OnTriggerEnter(Collider other) {
+        if (other.gameObject.CompareTag ( "Pick Up")) {
             other.gameObject.SetActive (false);
             count = count + 1;
             SetCountText ();
         }
     }
 
-    void SetCountText ()
-    {
+    void SetCountText () {
         countText.text = "Score: " + count.ToString ();
-        if (count >= 12)
-        {
+        if (count >= 12) {
             winText.text = "You Win!";
         }
     }

@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
     private Vector3 moveDirection = Vector3.zero;
     private CharacterController controller;
     private int count;
+    public GameObject mainCamera;
 
     void Start () {
         controller = GetComponent<CharacterController>();
@@ -23,8 +24,8 @@ public class PlayerController : MonoBehaviour {
 
         rb = GetComponent<Rigidbody>();
         count = 0;
-        SetCountText ();
-        winText.text = "";
+        // SetCountText ();
+        // winText.text = "";
     }
 
     /*void FixedUpdate () {
@@ -66,14 +67,28 @@ public class PlayerController : MonoBehaviour {
         if (other.gameObject.CompareTag ( "Pick Up")) {
             other.gameObject.SetActive (false);
             count = count + 1;
-            SetCountText ();
+            // SetCountText ();
+        } else if (other.gameObject.CompareTag("Fixed Camera")) {
+            // Debug.Log("Entered Camera Zone");
+            mainCamera.GetComponent<CameraController>().fixedCamera = other.gameObject;
+            mainCamera.GetComponent<CameraController>().fixedCameraBool = true;
         }
+    }
+    void OnTriggerExit(Collider other) {
+
+        if (other.gameObject.CompareTag("Fixed Camera")) {
+            // Debug.Log("Exited Camera Zone");
+            mainCamera.GetComponent<CameraController>().fixedCamera = other.gameObject;
+            mainCamera.GetComponent<CameraController>().fixedCameraBool = false;
+            mainCamera.GetComponent<CameraController>().exitingFixedCamera =  true;
+        }
+
     }
 
-    void SetCountText () {
-        countText.text = "Score: " + count.ToString ();
-        if (count >= 12) {
-            winText.text = "You Win!";
-        }
-    }
+    // void SetCountText () {
+    //     countText.text = "Score: " + count.ToString ();
+    //     if (count >= 12) {
+    //         winText.text = "You Win!";
+    //     }
+    // }
 }

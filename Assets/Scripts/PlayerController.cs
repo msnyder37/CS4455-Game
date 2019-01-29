@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
     public float speed;
     public float jumpSpeed;
     public float gravity;
-    public Gun gun;
+    public GunController gun;
 
     private Vector3 moveDirection = Vector3.zero;
     private CharacterController controller;
@@ -24,9 +24,13 @@ public class PlayerController : MonoBehaviour {
         ControlMouse();
 
         if (Input.GetButtonDown("Shoot")) {
+            gun.isFiring = true;
             gun.Shoot();
         } else if (Input.GetButton("Shoot")) {
+            gun.isFiring = true;
             gun.ShootContinuous();
+        } else if (Input.GetButtonUp("Shoot")) {
+            gun.isFiring = false;
         }
     }
 
@@ -42,7 +46,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         if (controller.isGrounded) {
-            // Recalculate and move directly on axes
+            // Recalculate and move directly on world axes
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
             moveDirection = moveDirection * speed;
 

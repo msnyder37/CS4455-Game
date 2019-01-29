@@ -217,8 +217,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d9d28d231c4644880050af297c729b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunType: 0
+  gunType: 2
+  bullet: {fileID: 4727098697454477210, guid: 917a33895315bce4d868f17a0ee8631d, type: 3}
   spawn: {fileID: 1283396830}
+  speed: 20
+  cooldown: 0.1
+  isFiring: 0
 --- !u!1 &439683561
 GameObject:
   m_ObjectHideFlags: 0

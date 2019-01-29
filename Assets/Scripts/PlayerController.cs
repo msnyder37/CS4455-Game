@@ -8,44 +8,45 @@ public class PlayerController : MonoBehaviour {
     public float speed;
     public float jumpSpeed;
     public float gravity;
-    public Text countText;
-    public Text winText;
     public Gun gun;
 
-    private Rigidbody rb;
     private Vector3 moveDirection = Vector3.zero;
     private CharacterController controller;
-    private int count;
-    public GameObject mainCamera;
+    private Camera mainCamera;
 
     void Start () {
         controller = GetComponent<CharacterController>();
         gameObject.transform.position = new Vector3(0, 1, 0);  // Set initial position
-
-        rb = GetComponent<Rigidbody>();
-        count = 0;
-        // SetCountText ();
-        // winText.text = "";
+        mainCamera = FindObjectOfType<Camera>();
     }
 
-    /*void FixedUpdate () {
-        float moveHorizontal = Input.GetAxis ("Horizontal");
-        float moveVertical = Input.GetAxis ("Vertical");
-
-        Vector3 movement = new Vector3 (moveHorizontal, 1.0f, moveVertical);
-
-        rb.AddForce (movement * speed);
-    }*/
-
     void Update() {
+        ControlMouse();
+
+        if (Input.GetButtonDown("Shoot")) {
+            gun.Shoot();
+        } else if (Input.GetButton("Shoot")) {
+            gun.ShootContinuous();
+        }
+    }
+
+    void ControlMouse() {
+        Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+        float rayLength;
+
+        if (groundPlane.Raycast(cameraRay, out rayLength)) {
+            Vector3 pointer = cameraRay.GetPoint(rayLength);
+            //Debug.DrawLine(cameraRay.origin, pointer, Color.blue);
+            transform.LookAt(new Vector3(pointer.x, transform.position.y, pointer.z));
+        }
+
         if (controller.isGrounded) {
             // Recalculate and move directly on axes
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
-            moveDirection = transform.TransformDirection(moveDirection);
             moveDirection = moveDirection * speed;
 
-            if (Input.GetButton("Jump"))
-            {
+            if (Input.GetButton("Jump")) {
                 moveDirection.y = jumpSpeed;
             }
         }
@@ -55,19 +56,11 @@ public class PlayerController : MonoBehaviour {
 
         // Move the controller
         controller.Move(moveDirection * Time.deltaTime);
-
-        if (Input.GetButtonDown("Shoot")) {
-            gun.Shoot();
-        } else if (Input.GetButton("Shoot")) {
-            gun.ShootContinuous();
-        }
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.gameObject.CompareTag ( "Pick Up")) {
+        if (other.gameObject.CompareTag("Pick Up")) {
             other.gameObject.SetActive (false);
-            count = count + 1;
-            // SetCountText ();
         } else if (other.gameObject.CompareTag("Fixed Camera")) {
             // Debug.Log("Entered Camera Zone");
             mainCamera.GetComponent<CameraController>().fixedCamera = other.gameObject;
@@ -84,11 +77,4 @@ public class PlayerController : MonoBehaviour {
         }
 
     }
-
-    // void SetCountText () {
-    //     countText.text = "Score: " + count.ToString ();
-    //     if (count >= 12) {
-    //         winText.text = "You Win!";
-    //     }
-    // }
 }

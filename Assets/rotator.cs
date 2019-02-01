@@ -10,4 +10,13 @@ public class rotator : MonoBehaviour
     {
         transform.Rotate(new Vector3(15, 30, 45) * Time.deltaTime);
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            Debug.Log("FOUND");
+            gameObject.SetActive(false);
+        }
+    }
 }

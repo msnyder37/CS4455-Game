@@ -9,6 +9,9 @@ TagManager:
   - Obstacle
   - Bullet
   - Target
+  - Destructible
+  - Indestructible
+  - Kill Plane
   layers:
   - Default
   - TransparentFX

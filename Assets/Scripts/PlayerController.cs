@@ -8,19 +8,21 @@ public class PlayerController : MonoBehaviour {
     public float speed;
     public float jumpSpeed;
     public float gravity;
+    public Transform spawn;
     public GunController gun;
 
-    private Vector3 moveDirection = Vector3.zero;
-    private CharacterController controller;
+    private Rigidbody rb;
     private Camera mainCamera;
+    private float distToGround;
 
     void Start () {
-        controller = GetComponent<CharacterController>();
-        gameObject.transform.position = new Vector3(0, 1, 0);  // Set initial position
+        gameObject.transform.position = spawn.position;  // Set initial position
+        rb = GetComponent<Rigidbody>();
         mainCamera = FindObjectOfType<Camera>();
+        distToGround = GetComponent<Collider>().bounds.extents.y;
     }
 
-    void Update() {
+    void FixedUpdate() {
         ControlMouse();
 
         if (Input.GetButtonDown("Shoot")) {
@@ -45,36 +47,46 @@ public class PlayerController : MonoBehaviour {
             transform.LookAt(new Vector3(pointer.x, transform.position.y, pointer.z));
         }
 
-        if (controller.isGrounded) {
-            // Recalculate and move directly on world axes
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
-            moveDirection = moveDirection * speed;
-
+        // Recalculate and move directly on axes
+        Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical")).normalized;
+        moveDir = moveDir * speed;
+        if (IsGrounded()) {
             if (Input.GetButton("Jump")) {
-                moveDirection.y = jumpSpeed;
+                // Using impulse disables the ability to short hop
+                rb.AddForce(transform.up * jumpSpeed, ForceMode.Impulse);
             }
         }
 
         // Apply gravity
-        moveDirection.y = moveDirection.y - (gravity * Time.deltaTime);
+        rb.AddForce(-transform.up * gravity, ForceMode.Acceleration);
 
-        // Move the controller
-        controller.Move(moveDirection * Time.deltaTime);
+        // Move the player
+        rb.MovePosition(transform.position + moveDir * Time.deltaTime);
+    }
+
+    bool IsGrounded() {
+        return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.gameObject.CompareTag("Pick Up")) {
-            other.gameObject.SetActive (false);
-        } else if (other.gameObject.CompareTag("Fixed Camera")) {
-            // Debug.Log("Entered Camera Zone");
-            mainCamera.GetComponent<CameraController>().fixedCamera = other.gameObject;
-            mainCamera.GetComponent<CameraController>().fixedCameraBool = true;
+        switch(other.gameObject.tag) {
+            case "Pick Up":
+                other.gameObject.SetActive(false);
+                break;
+            case "Fixed Camera":
+                mainCamera.GetComponent<CameraController>().fixedCamera = other.gameObject;
+                mainCamera.GetComponent<CameraController>().fixedCameraBool = true;
+                break;
+            case "Kill Plane":
+                Debug.Log(spawn.transform.position);
+                this.transform.position = spawn.transform.position;
+                Debug.Log(transform.position);
+                break;
         }
     }
     void OnTriggerExit(Collider other) {
 
         if (other.gameObject.CompareTag("Fixed Camera")) {
-            // Debug.Log("Exited Camera Zone");
             mainCamera.GetComponent<CameraController>().fixedCamera = other.gameObject;
             mainCamera.GetComponent<CameraController>().fixedCameraBool = false;
             mainCamera.GetComponent<CameraController>().exitingFixedCamera =  true;

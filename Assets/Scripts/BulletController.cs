@@ -11,11 +11,21 @@ public class BulletController : MonoBehaviour
     	Destroy(gameObject, 1);
     }
 
-    void OnTriggerEnter(Collider other)
+    /*void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Target"))
         {
-            Debug.Log("TARGET FOUND");
+            Destroy(gameObject);
+        }
+    }*/
+
+    void OnTriggerEnter(Collider c) {
+        Debug.Log("Hit");
+        Debug.Log(c.gameObject.tag);
+        if (c.gameObject.CompareTag("Destructible")) {
+            Destroy(c.gameObject);
+            Destroy(gameObject);
+        } else if (c.gameObject.CompareTag("Indestructible")) {
             Destroy(gameObject);
         }
     }

@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider other) {
-        switch(other.gameObject.tag) {
+        switch (other.gameObject.tag) {
             case "Pick Up":
                 other.gameObject.SetActive(false);
                 break;
@@ -78,19 +78,23 @@ public class PlayerController : MonoBehaviour {
                 mainCamera.GetComponent<CameraController>().fixedCameraBool = true;
                 break;
             case "Kill Plane":
-                Debug.Log(spawn.transform.position);
                 this.transform.position = spawn.transform.position;
-                Debug.Log(transform.position);
+                break;
+            case "Moving Platform":
+                transform.SetParent(other.gameObject.transform);
                 break;
         }
     }
     void OnTriggerExit(Collider other) {
-
-        if (other.gameObject.CompareTag("Fixed Camera")) {
-            mainCamera.GetComponent<CameraController>().fixedCamera = other.gameObject;
-            mainCamera.GetComponent<CameraController>().fixedCameraBool = false;
-            mainCamera.GetComponent<CameraController>().exitingFixedCamera =  true;
+        switch (other.gameObject.tag) {
+            case "Fixed Camera":
+                mainCamera.GetComponent<CameraController>().fixedCamera = other.gameObject;
+                mainCamera.GetComponent<CameraController>().fixedCameraBool = false;
+                mainCamera.GetComponent<CameraController>().exitingFixedCamera =  true;
+                break;
+            case "Moving Platform":
+                transform.SetParent(null);
+                break;
         }
-
     }
 }

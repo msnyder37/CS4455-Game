@@ -6,6 +6,7 @@ public class RobotHeroController : MonoBehaviour
 {
     public GameObject rifle;
     public Transform rifleBone;
+    public float angleRate = 2.5f;
 
     private Animator animator;
     private bool carryRifle;
@@ -60,5 +61,17 @@ public class RobotHeroController : MonoBehaviour
 
         this.animator.SetFloat("Forward", forward);
         this.animator.SetFloat("Turn", turn);
+
+        // move towards desired angle
+        float angleX = Input.GetAxisRaw("AngleX");
+        float angleY = Input.GetAxisRaw("AngleY");
+
+        if (angleX != 0.0f || angleY != 0.0f)
+        {
+            float desiredAngle = Mathf.Atan2(angleX, angleY) * Mathf.Rad2Deg;
+            Quaternion targetRotation = Quaternion.Euler(this.transform.rotation.eulerAngles.x, desiredAngle, this.transform.eulerAngles.z);
+
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, Time.deltaTime * this.angleRate);
+        }
     }
 }

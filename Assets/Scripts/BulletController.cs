@@ -27,6 +27,8 @@ public class BulletController : MonoBehaviour
             Destroy(gameObject);
         } else if (c.gameObject.CompareTag("Indestructible")) {
             Destroy(gameObject);
+        } else {
+            Destroy(gameObject);
         }
     }
 }

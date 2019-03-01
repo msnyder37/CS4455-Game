@@ -24,7 +24,9 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate() {
         ControlMouse();
+    }
 
+    void Update() {
         if (Input.GetButtonDown("Shoot")) {
             gun.isFiring = true;
             gun.Shoot();

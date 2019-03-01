@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
 
     public float speed;
     public float jumpSpeed;
+    public float jumpCooldown;
     public float gravity;
     public Transform spawn;
     public GunController gun;
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody rb;
     private Camera mainCamera;
     private float distToGround;
+    private float jumpClock;
 
     void Start () {
         gameObject.transform.position = spawn.position;  // Set initial position
@@ -53,9 +55,13 @@ public class PlayerController : MonoBehaviour {
         Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical")).normalized;
         moveDir = moveDir * speed;
         if (IsGrounded()) {
-            if (Input.GetButton("Jump")) {
-                // Using impulse disables the ability to short hop
-                rb.AddForce(transform.up * jumpSpeed, ForceMode.Impulse);
+            jumpClock -= Time.deltaTime;
+            if (jumpClock <= 0) {
+                jumpClock = jumpCooldown;
+                if (Input.GetButton("Jump")) {
+                    // Using impulse disables the ability to short hop
+                    rb.AddForce(transform.up * jumpSpeed, ForceMode.Impulse);
+                }
             }
         }
 

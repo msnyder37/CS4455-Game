@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
     private Camera mainCamera;
     private float distToGround;
     private float jumpClock;
+    private Vector3 moveDir;
 
     void Start () {
         gameObject.transform.position = spawn.position;  // Set initial position
@@ -74,6 +75,10 @@ public class PlayerController : MonoBehaviour {
 
     bool IsGrounded() {
         return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
+    }
+
+    public Vector3 GetMoveDir() {
+        return moveDir;
     }
 
     void OnTriggerEnter(Collider other) {

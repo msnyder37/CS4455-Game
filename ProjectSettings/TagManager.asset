@@ -23,8 +23,8 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
+  - EnemyPhysicsLayer
+  - PlayerPhysicsLayer
   - 
   - 
   - 

@@ -11,6 +11,7 @@ public class CameraController : MonoBehaviour {
     public float cameraSpeed =.05f;
     public float lookAhead;
     public bool useLookAhead = false;
+    public float zOffset;
 
 
     void Start() {
@@ -31,7 +32,7 @@ public class CameraController : MonoBehaviour {
                 transform.position = Vector3.Lerp(transform.position, newPosition + offset, cameraSpeed);
 
             } else {
-                transform.position = Vector3.Lerp(transform.position, player.transform.position + offset, cameraSpeed);
+                transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - zOffset) + offset, cameraSpeed);
             }
 
         }

@@ -9,6 +9,8 @@ public class CameraController : MonoBehaviour {
     public GameObject fixedCamera;
     public bool fixedCameraBool, exitingFixedCamera;
     public float cameraSpeed =.05f;
+    public float lookAhead;
+    public bool useLookAhead = false;
 
 
     void Start() {
@@ -17,16 +19,21 @@ public class CameraController : MonoBehaviour {
 
     void LateUpdate() {
         if(fixedCameraBool) {
-            Vector3 newPosition = new Vector3(fixedCamera.transform.position.x, transform.position.y, fixedCamera.transform.position.z);
+            Vector3 newPosition = new Vector3(fixedCamera.transform.position.x, fixedCamera.transform.position.y, fixedCamera.transform.position.z);
             transform.position = Vector3.Lerp(transform.position, newPosition, cameraSpeed);
         }
         else {
-            transform.position = Vector3.Lerp(transform.position, player.transform.position + offset, cameraSpeed);
-            // transform.position = player.transform.position + offset;
+            if(useLookAhead) {
+                Vector3 moveDir = player.GetComponent<PlayerController>().GetMoveDir();
+                moveDir = Vector3.Scale(moveDir, new Vector3(lookAhead, 0, lookAhead));
+                Vector3 newPosition = new Vector3(player.transform.position.x + moveDir.x, player.transform.position.y, player.transform.position.z + moveDir.z);
+
+                transform.position = Vector3.Lerp(transform.position, newPosition + offset, cameraSpeed);
+
+            } else {
+                transform.position = Vector3.Lerp(transform.position, player.transform.position + offset, cameraSpeed);
+            }
+
         }
     }
-
-
-
-
 }

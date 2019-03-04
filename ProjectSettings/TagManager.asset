@@ -12,6 +12,7 @@ TagManager:
   - Destructible
   - Indestructible
   - Kill Plane
+  - Moving Platform
   layers:
   - Default
   - TransparentFX

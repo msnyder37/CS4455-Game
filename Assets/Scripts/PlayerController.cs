@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
 
     public float speed;
     public float jumpSpeed;
+    public float jumpCooldown;
     public float gravity;
     public Transform spawn;
     public GunController gun;
@@ -14,6 +15,8 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody rb;
     private Camera mainCamera;
     private float distToGround;
+    private float jumpClock;
+    private Vector3 moveDir;
 
     void Start () {
         gameObject.transform.position = spawn.position;  // Set initial position
@@ -24,7 +27,9 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate() {
         ControlMouse();
+    }
 
+    void Update() {
         if (Input.GetButtonDown("Shoot")) {
             gun.isFiring = true;
             gun.Shoot();
@@ -51,9 +56,13 @@ public class PlayerController : MonoBehaviour {
         Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical")).normalized;
         moveDir = moveDir * speed;
         if (IsGrounded()) {
-            if (Input.GetButton("Jump")) {
-                // Using impulse disables the ability to short hop
-                rb.AddForce(transform.up * jumpSpeed, ForceMode.Impulse);
+            jumpClock -= Time.deltaTime;
+            if (jumpClock <= 0) {
+                jumpClock = jumpCooldown;
+                if (Input.GetButton("Jump")) {
+                    // Using impulse disables the ability to short hop
+                    rb.AddForce(transform.up * jumpSpeed, ForceMode.Impulse);
+                }
             }
         }
 
@@ -68,8 +77,12 @@ public class PlayerController : MonoBehaviour {
         return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
     }
 
+    public Vector3 GetMoveDir() {
+        return moveDir;
+    }
+
     void OnTriggerEnter(Collider other) {
-        switch(other.gameObject.tag) {
+        switch (other.gameObject.tag) {
             case "Pick Up":
                 other.gameObject.SetActive(false);
                 break;
@@ -78,19 +91,23 @@ public class PlayerController : MonoBehaviour {
                 mainCamera.GetComponent<CameraController>().fixedCameraBool = true;
                 break;
             case "Kill Plane":
-                Debug.Log(spawn.transform.position);
                 this.transform.position = spawn.transform.position;
-                Debug.Log(transform.position);
+                break;
+            case "Moving Platform":
+                transform.SetParent(other.gameObject.transform);
                 break;
         }
     }
     void OnTriggerExit(Collider other) {
-
-        if (other.gameObject.CompareTag("Fixed Camera")) {
-            mainCamera.GetComponent<CameraController>().fixedCamera = other.gameObject;
-            mainCamera.GetComponent<CameraController>().fixedCameraBool = false;
-            mainCamera.GetComponent<CameraController>().exitingFixedCamera =  true;
+        switch (other.gameObject.tag) {
+            case "Fixed Camera":
+                mainCamera.GetComponent<CameraController>().fixedCamera = other.gameObject;
+                mainCamera.GetComponent<CameraController>().fixedCameraBool = false;
+                mainCamera.GetComponent<CameraController>().exitingFixedCamera =  true;
+                break;
+            case "Moving Platform":
+                transform.SetParent(null);
+                break;
         }
-
     }
 }

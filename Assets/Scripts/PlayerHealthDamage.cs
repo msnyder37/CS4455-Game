@@ -9,9 +9,7 @@ public class PlayerHealthDamage : MonoBehaviour
     PlayerHealth PlayerHealth;
     public float damage_amount = 0.1f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         thePlayer = GameObject.Find("Player");
         PlayerHealth = thePlayer.GetComponent<PlayerHealth>();
     }

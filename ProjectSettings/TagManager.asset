@@ -13,6 +13,7 @@ TagManager:
   - Indestructible
   - Kill Plane
   - Moving Platform
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - PostProcessing
   - EnemyPhysicsLayer
   - PlayerPhysicsLayer
-  - 
+  - EnemyAttacks
   - 
   - 
   - 

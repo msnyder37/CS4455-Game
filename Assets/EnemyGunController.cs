@@ -3,29 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GunController : MonoBehaviour
+public class EnemyGunController : MonoBehaviour
 {
     public enum GunType {Semi, Burst, Auto};
     public GunType gunType;
     public BulletController bullet;
-	public Transform spawn;
+	// public Transform spawn;
     public float speed;
     public float cooldown;
+    public Transform player;
     [HideInInspector] public bool isFiring;
 
     private float shotClock;
 
     //Ammo Tracking and Display - Bishoy
-    public int ammo = 100;
-    public Text ammoDisplay;
+    // public int ammo = 1000;
+    // public Text ammoDisplay;
 
     //Display ammo for HUD - Bishoy
     void Update() {
-        ammoDisplay.text = ammo.ToString();
+        // ammoDisplay.text = ammo.ToString();
     }
 
     public void Shoot() {
-        if (ammo > 0){  //Only fire if we have ammo - Bishoy
+        // if (ammo > 0){  //Only fire if we have ammo - Bishoy
             if (isFiring) {
                 shotClock -= Time.deltaTime;
                 if (shotClock <= 0) {
@@ -41,16 +42,16 @@ public class GunController : MonoBehaviour
                     //}
 
                     //Debug.DrawRay(ray.origin, ray.direction * shootDistance, Color.red, 1);
-                    BulletController nb = Instantiate(bullet, spawn.position, spawn.rotation) as BulletController;
+                    BulletController nb = Instantiate(bullet, transform.position + (.2f*player.position), transform.rotation) as BulletController;
                     nb.speed = speed;
 
                     //Keep track of ammo - Bishoy
-                    ammo--;
+                    // ammo--;
                 }
-            } else {
-                shotClock = 0;
-        }
-        }
+            // } else {
+                // shotClock = 0;
+        	}
+        // }
 
     }
 

@@ -17,8 +17,9 @@ public class PlayerHealthDamage : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag == "Player"){  
-            PlayerHealth.health_player -= damage_amount;  
+        if (other.gameObject.tag == "Player"){
+            PlayerHealth.health_player -= damage_amount;
+            thePlayer.GetComponent<Rigidbody>().velocity *= -3;
         }
     }
 }

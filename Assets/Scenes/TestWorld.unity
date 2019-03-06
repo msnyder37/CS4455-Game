@@ -6773,6 +6773,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TempEnemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1293686493936961562, guid: 624cb3899c870e547a6c3d9966932287,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1293686493936961563, guid: 624cb3899c870e547a6c3d9966932287,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6840,6 +6845,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1491966635}
+    - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
+      propertyPath: spawn
+      value: 
+      objectReference: {fileID: 1141008146}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
 --- !u!4 &840735872 stripped
@@ -7060,6 +7069,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TempEnemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1293686493936961562, guid: 624cb3899c870e547a6c3d9966932287,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1293686493936961563, guid: 624cb3899c870e547a6c3d9966932287,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7127,6 +7141,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1491966635}
+    - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
+      propertyPath: spawn
+      value: 
+      objectReference: {fileID: 1141008146}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
 --- !u!4 &857431165 stripped
@@ -9138,7 +9156,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1141008145}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.9, y: 1, z: -38.2}
+  m_LocalPosition: {x: 14.8, y: 1, z: 28.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 844236520}
@@ -15001,6 +15019,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TempEnemy (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1293686493936961562, guid: 624cb3899c870e547a6c3d9966932287,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1293686493936961563, guid: 624cb3899c870e547a6c3d9966932287,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15068,6 +15091,10 @@ PrefabInstance:
       propertyPath: patrolPoints.Array.data[1]
       value: 
       objectReference: {fileID: 1960960546}
+    - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
+      propertyPath: spawn
+      value: 
+      objectReference: {fileID: 1141008146}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
 --- !u!1 &1905012789
@@ -17101,6 +17128,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1491966635}
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
+      propertyPath: spawn
+      value: 
+      objectReference: {fileID: 1141008146}
+    - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: patrolPoints.Array.data[0]
       value: 
       objectReference: {fileID: 1248953747}
@@ -17108,5 +17139,9 @@ PrefabInstance:
       propertyPath: patrolPoints.Array.data[1]
       value: 
       objectReference: {fileID: 953465036}
+    - target: {fileID: 985484153, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1491966641}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 624cb3899c870e547a6c3d9966932287, type: 3}

@@ -12,13 +12,15 @@ public class PlayerHealthDamage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        thePlayer = GameObject.Find("Player");
+        thePlayer = GameObject.Find("Soldier");
         PlayerHealth = thePlayer.GetComponent<PlayerHealth>();
     }
 
-    void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag == "Player"){  
-            PlayerHealth.health_player -= damage_amount;  
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            PlayerHealth.health_player -= damage_amount;
         }
     }
 }

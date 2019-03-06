@@ -1164,7 +1164,7 @@ GameObject:
   - component: {fileID: 8005306345927706013}
   m_Layer: 0
   m_Name: Soldier
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1223,6 +1223,9 @@ MonoBehaviour:
   angleRate: 2.5
   jumpForce: 11.5
   spawn: {fileID: 0}
+  hasKey1: 0
+  hasKey2: 0
+  hasKey3: 0
 --- !u!54 &2425729913319481953
 Rigidbody:
   m_ObjectHideFlags: 0

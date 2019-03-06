@@ -17,6 +17,9 @@ public class RobotHeroController : MonoBehaviour
     private CapsuleCollider capsuleCollider;
     private Rigidbody rb;
     private GunController rifleController;
+    public bool hasKey1;
+    public bool hasKey2;
+    public bool hasKey3;
 
     private float distanceToGround;
 
@@ -31,6 +34,10 @@ public class RobotHeroController : MonoBehaviour
 
         this.distanceToGround = this.hipBone.transform.position.y;
         this.rifleController = null;
+
+        this.hasKey1 = false;
+        this.hasKey2 = false;
+        this.hasKey3 = false;
     }
 
     // Update is called once per frame
@@ -115,7 +122,19 @@ public class RobotHeroController : MonoBehaviour
                 this.transform.position = spawn.transform.position;
                 break;
             case "Moving Platform":
-                transform.SetParent(other.gameObject.transform);
+                this.transform.SetParent(other.gameObject.transform);
+                break;
+            case "Key 1":
+                other.gameObject.SetActive(false);
+                this.hasKey1 = true;
+                break;
+            case "Key 2":
+                other.gameObject.SetActive(false);
+                this.hasKey2 = true;
+                break;
+            case "Key 3":
+                other.gameObject.SetActive(false);
+                this.hasKey3 = true;
                 break;
         }
     }

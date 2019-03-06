@@ -9,6 +9,7 @@ public class RobotHeroController : MonoBehaviour
     public Transform hipBone;
     public float angleRate = 2.5f;
     public float jumpForce = 11.5f;
+    public GameObject spawn;
 
     private Animator animator;
     private Camera mainCamera;
@@ -64,31 +65,13 @@ public class RobotHeroController : MonoBehaviour
         {
             // fire the gun or punch
             this.animator.SetTrigger("Action");
-            //this.rifleController.isFiring = true;
-            //this.rifleController.Shoot();
         }
 
         if (Input.GetButtonDown("Jump") && this.IsGrounded())
         {
-            //this.rb.
             // robot jumps
-            //this.animator.SetTrigger("Jump");
             this.rb.AddForce(Vector3.up * this.jumpForce, ForceMode.Impulse);
         }
-
-        /*
-        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
-        {
-            // adjust the center of the capsule collider
-            this.capsuleCollider.center = new Vector3(0, this.animator.GetFloat("ColliderCenter"), 0);
-            //this.capsuleCollider.transform.position.Set(0, this.animator.GetFloat("ColliderCenter"), 0);
-            //this.capsuleCollider.center.Set(0, this.animator.GetFloat("ColliderCenter"), 0);
-        }
-        else
-        {
-            this.capsuleCollider.center = new Vector3(0, 0.5f, 0);
-        }
-        */
 
         float forward = Input.GetAxisRaw("Vertical");
         float turn = Input.GetAxisRaw("Horizontal");
@@ -129,7 +112,7 @@ public class RobotHeroController : MonoBehaviour
                 this.mainCamera.GetComponent<CameraController>().fixedCameraBool = true;
                 break;
             case "Kill Plane":
-                //this.transform.position = spawn.transform.position;
+                this.transform.position = spawn.transform.position;
                 break;
             case "Moving Platform":
                 transform.SetParent(other.gameObject.transform);
@@ -154,6 +137,7 @@ public class RobotHeroController : MonoBehaviour
 
     void FireRifle()
     {
+        // triggered by animation event to fire the bullet at the right time
         this.rifleController.isFiring = true;
         this.rifleController.Shoot();
         this.rifleController.isFiring = false;

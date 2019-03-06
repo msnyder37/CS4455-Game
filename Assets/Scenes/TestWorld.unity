@@ -11076,12 +11076,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1421349682}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1423276726 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3748902743307442094, guid: 465ebfe9e13a146fa985eb552572d370,
-    type: 3}
-  m_PrefabInstance: {fileID: 3748902743422813166}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1431948556
 GameObject:
   m_ObjectHideFlags: 0
@@ -16414,16 +16408,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Soldier
       objectReference: {fileID: 0}
-    - target: {fileID: 8005306345927706013, guid: 465ebfe9e13a146fa985eb552572d370,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2425729913319481953, guid: 465ebfe9e13a146fa985eb552572d370,
-        type: 3}
-      propertyPath: m_Mass
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 3748902743755919443, guid: 465ebfe9e13a146fa985eb552572d370,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16481,14 +16465,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3748902743755919445, guid: 465ebfe9e13a146fa985eb552572d370,
         type: 3}
-      propertyPath: jumpForce
-      value: 11.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3748902743755919445, guid: 465ebfe9e13a146fa985eb552572d370,
-        type: 3}
-      propertyPath: hipBone
+      propertyPath: spawn
       value: 
-      objectReference: {fileID: 1423276726}
+      objectReference: {fileID: 1141008145}
     m_RemovedComponents:
     - {fileID: 3748902743307442095, guid: 465ebfe9e13a146fa985eb552572d370, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 465ebfe9e13a146fa985eb552572d370, type: 3}

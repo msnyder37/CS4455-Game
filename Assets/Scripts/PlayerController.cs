@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour {
     public float gravity;
     public Transform spawn;
     public GunController gun;
+    public bool hasKey1;
+    public bool hasKey2;
+    public bool hasKey3;
 
     private Rigidbody rb;
     private Camera mainCamera;
@@ -23,6 +26,9 @@ public class PlayerController : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         mainCamera = FindObjectOfType<Camera>();
         distToGround = GetComponent<Collider>().bounds.extents.y;
+        hasKey1 = false;
+        hasKey2 = false;
+        hasKey3 = false;
     }
 
     void FixedUpdate() {
@@ -95,6 +101,18 @@ public class PlayerController : MonoBehaviour {
                 break;
             case "Moving Platform":
                 transform.SetParent(other.gameObject.transform);
+                break;
+            case "Key 1":
+                other.gameObject.SetActive(false);
+                hasKey1 = true;
+                break;
+            case "Key 2":
+                other.gameObject.SetActive(false);
+                hasKey2 = true;
+                break;
+            case "Key 3":
+                other.gameObject.SetActive(false);
+                hasKey3 = true;
                 break;
         }
     }

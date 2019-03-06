@@ -13,6 +13,9 @@ TagManager:
   - Indestructible
   - Kill Plane
   - Moving Platform
+  - Key 1
+  - Key 2
+  - Key 3
   layers:
   - Default
   - TransparentFX

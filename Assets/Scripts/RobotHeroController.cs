@@ -17,6 +17,7 @@ public class RobotHeroController : MonoBehaviour
     private CapsuleCollider capsuleCollider;
     private Rigidbody rb;
     private GunController rifleController;
+
     public bool hasKey1;
     public bool hasKey2;
     public bool hasKey3;

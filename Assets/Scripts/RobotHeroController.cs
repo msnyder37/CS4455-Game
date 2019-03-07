@@ -163,6 +163,12 @@ public class RobotHeroController : MonoBehaviour
         this.rifleController.isFiring = false;
     }
 
+    public Vector3 GetMoveDir()
+    {
+        // gets the direction of movement for camera lookahead
+        return new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+    }
+
     private bool IsGrounded()
     {
         return Physics.Raycast(this.hipBone.position, Vector3.down, this.distanceToGround + 0.1f);

@@ -6,35 +6,57 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     //credit to https://answers.unity.com/questions/989092/do-you-know-any-patrolling-ai-script-for-a-navmesh.html
+    //https://forum.unity.com/threads/solved-random-wander-ai-using-navmesh.327950/
     public GameObject player;
     public Transform spawn;
     public GameObject[] patrolPoints;
-    private int patrolPoint = 0;
     public NavMeshAgent agent;
     public float stoppingDistance;
     public float turnSpeed;
-    public EnemyGunController gun;
     public int health;
     public float bulletSpeed;
     public float cooldown;
+    public float sightRadius;
     public Transform bullet;
+    public bool isStationary;
+    public bool isWandering;
+    public float wanderTimer;
+    public float wanderRadius;
 
+    private int patrolPoint = 0;
     private float shotClock;
+    private float changeWanderDirectionTimer;
 
 
     void Start()
     {
         stoppingDistance = .4f;
+        changeWanderDirectionTimer = wanderTimer;
 
 
     }
 
     void Update()
     {
-        if(!Physics.Linecast(transform.position,player.transform.position,1)){ //check if we see player by linecasting,move player to another layer so the ray won't hit it.
-             Attack();
-        }else {
-             Patrol();
+        if(!Physics.Linecast(transform.position,player.transform.position,1) && Vector3.Distance(transform.position, player.transform.position) < sightRadius){ //check if we see player by linecasting,move player to another layer so the ray won't hit it.
+            Attack();
+        } else {
+            if (!isStationary) {
+                if (isWandering) {
+                    changeWanderDirectionTimer += Time.deltaTime;
+                    if (changeWanderDirectionTimer >= wanderTimer) {
+                        Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
+                        agent.SetDestination(newPos);
+                        changeWanderDirectionTimer = 0;
+                    }
+
+                } else {
+
+                    Patrol();
+                }
+            } else {
+                agent.isStopped = true;
+            }
         }
 
     }
@@ -45,7 +67,7 @@ public class EnemyController : MonoBehaviour
             if(patrolPoints.Length > 0){
                 agent.SetDestination(patrolPoints[patrolPoint].transform.position);
 
-                patrolPoint++;    //use distance if needed(lower precision)
+                patrolPoint++;
 
                 if(patrolPoint >= patrolPoints.Length){
                     patrolPoint = 0;
@@ -59,12 +81,12 @@ public class EnemyController : MonoBehaviour
         GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
         transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
         Shoot();
-        // Debug.Log("I see player");
+
 
     }
 
     void OnTriggerEnter(Collider c) {
-    	//Debug.Log(c.gameObject);
+
     	if (c.gameObject.CompareTag("Bullet")) {
     		// TODO: Play destruction animation
     		health--;
@@ -81,17 +103,28 @@ public class EnemyController : MonoBehaviour
     }
 
     void Shoot() {
-    	// if (bulletList.Count < 10) {
+
     	shotClock -= Time.deltaTime;
     	if (shotClock <= 0) {
-                    shotClock = cooldown;
+            shotClock = cooldown;
 	    	Transform gun = transform.GetChild(0);
 	    	Transform bc = Instantiate(bullet, new Vector3(gun.position.x, spawn.position.y, gun.position.z), gun.rotation);
 	    	bc.gameObject.GetComponent<BulletController>().speed = bulletSpeed;
 
-    	} else {
-    		shotClock = 0;
+
     	}
+    }
+
+    public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask) {
+        Vector3 randDirection = Random.insideUnitSphere * dist;
+
+        randDirection += origin;
+
+        NavMeshHit navHit;
+
+        NavMesh.SamplePosition (randDirection, out navHit, dist, layermask);
+
+        return navHit.position;
     }
 
 }

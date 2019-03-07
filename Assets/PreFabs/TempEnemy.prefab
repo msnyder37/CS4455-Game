@@ -42,9 +42,7 @@ GameObject:
   - component: {fileID: 1293686493936961556}
   - component: {fileID: 358219160}
   - component: {fileID: 358219161}
-  - component: {fileID: 985484152}
   - component: {fileID: 985484155}
-  - component: {fileID: 985484153}
   - component: {fileID: 985484154}
   m_Layer: 9
   m_Name: TempEnemy
@@ -105,11 +103,13 @@ MonoBehaviour:
   agent: {fileID: 358219161}
   stoppingDistance: 0.5
   turnSpeed: 1
-  gun: {fileID: 985484153}
+  gun: {fileID: 0}
   health: 10
   bulletSpeed: 20
   cooldown: 0.1
+  sightRadius: 15
   bullet: {fileID: 8161022668314006977, guid: e042bde8f01a6bd40bc4d31ead848fa5, type: 3}
+  isStationary: 0
 --- !u!195 &358219161
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -132,26 +132,6 @@ NavMeshAgent:
   m_BaseOffset: 1.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &985484152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1293686493936961562}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16d9d28d231c4644880050af297c729b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunType: 0
-  bullet: {fileID: 4727098697454477210, guid: 917a33895315bce4d868f17a0ee8631d, type: 3}
-  spawn: {fileID: 0}
-  speed: 0
-  cooldown: 0
-  isFiring: 0
-  ammo: 1000
-  ammoDisplay: {fileID: 0}
 --- !u!65 &985484155
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -165,24 +145,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &985484153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1293686493936961562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b06e72014dff858418addde7ec3c0a7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunType: 0
-  bullet: {fileID: 4727098697454477210, guid: 917a33895315bce4d868f17a0ee8631d, type: 3}
-  speed: 5
-  cooldown: 0
-  player: {fileID: 0}
-  isFiring: 0
 --- !u!114 &985484154
 MonoBehaviour:
   m_ObjectHideFlags: 0

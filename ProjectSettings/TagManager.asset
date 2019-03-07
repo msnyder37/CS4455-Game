@@ -15,6 +15,9 @@ TagManager:
   - Moving Platform
   - EnemyBullet
   - Enemy
+  - Key 1
+  - Key 2
+  - Key 3
   layers:
   - Default
   - TransparentFX

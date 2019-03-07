@@ -4,16 +4,37 @@ using UnityEngine;
 
 public class Destructible : MonoBehaviour
 {
-	public int health;
-    void OnTriggerEnter(Collider c) {
-    	//Debug.Log(c.gameObject);
-    	if (c.gameObject.CompareTag("Bullet")) {
-    		// TODO: Play destruction animation
-    		health--;
-    		if (health <= 0) {
-    			Destroy(transform.gameObject);
+	public float destructibleHealth;
+	public GameObject animation;
+	public float animDuration;
 
-    		}
+	/*private float cooldown;
+	private GameObject inst;
+
+	void Start() {
+		cooldown = 0.0f;
+	}
+
+	void Update() {
+		if (cooldown < 0) {
+			if (inst != null) {
+				//Destroy(inst);
+			}
+		}
+		cooldown -= Time.deltaTime;
+	}*/
+    void OnTriggerEnter(Collider c) {
+    	if (c.gameObject.CompareTag("Bullet")) {
+			  destructibleHealth = destructibleHealth - 1.0f;
+			  if (destructibleHealth <= 0) {
+				  Explode();
+			  }
     	}
+    }
+
+    void Explode() {
+    	GameObject obj = Instantiate(animation, transform.position, transform.rotation);
+    	Destroy(this.gameObject);
+    	Destroy(obj, animDuration);
     }
 }

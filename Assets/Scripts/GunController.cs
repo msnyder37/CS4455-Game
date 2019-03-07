@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class GunController : MonoBehaviour
 {
-    public enum GunType {Semi, Burst, Auto};
+    public enum GunType { Semi, Burst, Auto };
     public GunType gunType;
     public BulletController bullet;
-	public Transform spawn;
+    public Transform spawn;
     public float speed;
     public float cooldown;
     [HideInInspector] public bool isFiring;
@@ -19,16 +19,26 @@ public class GunController : MonoBehaviour
     public int ammo = 100;
     public Text ammoDisplay;
 
+    void Start()
+    {
+        this.ammoDisplay = GameObject.Find("Ammo").GetComponent<Text>();
+    }
+
     //Display ammo for HUD - Bishoy
-    void Update() {
+    void Update()
+    {
         ammoDisplay.text = ammo.ToString();
     }
 
-    public void Shoot() {
-        if (ammo > 0){  //Only fire if we have ammo - Bishoy
-            if (isFiring) {
+    public void Shoot()
+    {
+        if (ammo > 0)
+        {  //Only fire if we have ammo - Bishoy
+            if (isFiring)
+            {
                 shotClock -= Time.deltaTime;
-                if (shotClock <= 0) {
+                if (shotClock <= 0)
+                {
                     shotClock = cooldown;
 
                     //Ray ray = new Ray(spawn.position, spawn.forward);
@@ -47,15 +57,18 @@ public class GunController : MonoBehaviour
                     //Keep track of ammo - Bishoy
                     ammo--;
                 }
-            } else {
+            }
+            else
+            {
                 shotClock = 0;
+            }
         }
-        }
-
     }
 
-    public void ShootContinuous() {
-        if (gunType == GunType.Auto) {
+    public void ShootContinuous()
+    {
+        if (gunType == GunType.Auto)
+        {
             Shoot();
         }
     }

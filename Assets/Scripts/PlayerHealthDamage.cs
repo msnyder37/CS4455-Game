@@ -9,14 +9,18 @@ public class PlayerHealthDamage : MonoBehaviour
     PlayerHealth PlayerHealth;
     public float damage_amount = 0.1f;
 
-    void Start() {
-        thePlayer = GameObject.Find("Player");
+    // Start is called before the first frame update
+    void Start()
+    {
+        thePlayer = GameObject.Find("Soldier");
         PlayerHealth = thePlayer.GetComponent<PlayerHealth>();
     }
 
-    void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag == "Player"){  
-            PlayerHealth.health_player -= damage_amount;  
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            PlayerHealth.health_player -= damage_amount;
         }
     }
 }

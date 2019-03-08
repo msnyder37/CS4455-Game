@@ -5,10 +5,12 @@ using UnityEngine;
 public class door3open : MonoBehaviour
 {
     public Animator animator;
-    public PlayerController playerScript;
+    public RobotHeroController playerScript;
 
-    void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag == "Player" && playerScript.hasKey3 == true) {
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player" && playerScript.hasKey3 == true)
+        {
             animator.enabled = true;
         }
     }

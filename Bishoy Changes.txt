@@ -1,7 +1,0 @@
--Added Toggled pause screen with restart and exit buttons. 
--Added ammo control to GunController script. A counter is now available "ammo". Added display in HUD. Added check to stop firing if ammo is finished.
--Added Health float for the player. Added health bar to HUD.
--Added a gameover scene. If player health drops to 0, the scene is loaded.
--Added the Restart level and Quit game buttons to the game over screen.
--Added PlayerHealthDamage script: Can be attached to any object and would inflict damage on player health if colliders touch. Damage amount can be controlled through the inspector.
--Added a level timer. Gameover scene loaded once time's up.

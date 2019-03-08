@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class timer : MonoBehaviour
 {
-    public float timeLimit = 120;
+    public float timeLimit; //timelimit in seconds
     public Text timeLimitDisplay;  
     int min;
     int sec;

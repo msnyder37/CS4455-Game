@@ -16,6 +16,7 @@ TagManager:
   - Key 1
   - Key 2
   - Key 3
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
@@ -26,9 +27,9 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
-  - 
+  - PlayerPhysicsLayer
+  - EnemyPhysicsLayer
+  - EnemyAttacksLayer
   - 
   - 
   - 

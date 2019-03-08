@@ -17,11 +17,11 @@ public class EnemyController : MonoBehaviour
     public float bulletSpeed;
     public float cooldown;
     public float sightRadius;
+    public float wanderTimer;
+    public float wanderRadius;
     public Transform bullet;
     public bool isStationary;
     public bool isWandering;
-    public float wanderTimer;
-    public float wanderRadius;
 
     private int patrolPoint = 0;
     private float shotClock;
@@ -38,7 +38,8 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        if(!Physics.Linecast(transform.position,player.transform.position,1) && Vector3.Distance(transform.position, player.transform.position) < sightRadius){ //check if we see player by linecasting,move player to another layer so the ray won't hit it.
+
+        if(!Physics.Linecast(transform.position,player.transform.position,10) && Vector3.Distance(transform.position, player.transform.position) < sightRadius){
             Attack();
         } else {
             if (!isStationary) {
@@ -96,9 +97,9 @@ public class EnemyController : MonoBehaviour
     		}
     	}
     	if (c.gameObject.CompareTag("Player")) {
-    		Rigidbody rb = c.gameObject.GetComponent<Rigidbody>();
-    		rb.AddForce(rb.velocity *= -3);
-    		Debug.Log("in me");
+    		// Rigidbody rb = c.gameObject.GetComponent<Rigidbody>();
+    		// rb.AddForce(rb.velocity *= -3);
+    		// Debug.Log("in me");
     	}
     }
 
@@ -106,9 +107,10 @@ public class EnemyController : MonoBehaviour
 
     	shotClock -= Time.deltaTime;
     	if (shotClock <= 0) {
+    		// Debug.Log("Shoot");
             shotClock = cooldown;
-	    	Transform gun = transform.GetChild(0);
-	    	Transform bc = Instantiate(bullet, new Vector3(gun.position.x, spawn.position.y, gun.position.z), gun.rotation);
+	    	Transform gun = transform.GetChild(0).GetChild(0);
+	    	Transform bc = Instantiate(bullet, new Vector3(gun.position.x, gun.position.y, gun.position.z), gun.rotation);
 	    	bc.gameObject.GetComponent<BulletController>().speed = bulletSpeed;
 
 

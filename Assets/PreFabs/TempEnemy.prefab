@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 854624486}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 358219161}
   - component: {fileID: 985484155}
   - component: {fileID: 985484154}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: TempEnemy
   m_TagString: Target
   m_Icon: {fileID: 0}
@@ -103,13 +103,15 @@ MonoBehaviour:
   agent: {fileID: 358219161}
   stoppingDistance: 0.5
   turnSpeed: 1
-  gun: {fileID: 0}
   health: 10
   bulletSpeed: 20
-  cooldown: 0.1
-  sightRadius: 15
+  cooldown: 0.75
+  sightRadius: 20
+  wanderTimer: 0
+  wanderRadius: 0
   bullet: {fileID: 8161022668314006977, guid: e042bde8f01a6bd40bc4d31ead848fa5, type: 3}
   isStationary: 0
+  isWandering: 0
 --- !u!195 &358219161
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -170,7 +172,7 @@ GameObject:
   - component: {fileID: 1293686494589093461}
   - component: {fileID: 1293686494589093460}
   - component: {fileID: 1293686494589093467}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +218,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8edb4d4c77958c349bc03e0978a2af02, type: 2}
+  - {fileID: 2100000, guid: 2fcb289e613661a4d8d037c5dd58eb10, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -261,7 +263,7 @@ GameObject:
   - component: {fileID: 1293686494895421071}
   - component: {fileID: 1293686494895421070}
   - component: {fileID: 1293686494895421069}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,7 +310,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8edb4d4c77958c349bc03e0978a2af02, type: 2}
+  - {fileID: 2100000, guid: 2fcb289e613661a4d8d037c5dd58eb10, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

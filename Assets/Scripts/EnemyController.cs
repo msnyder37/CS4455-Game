@@ -93,6 +93,7 @@ public class EnemyController : MonoBehaviour
     		health--;
     		if (health <= 0) {
     			Destroy(transform.gameObject);
+                EventManager.TriggerEvent<RobotDeathEvent, EnemyController>(this);
 
     		}
     	}

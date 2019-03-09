@@ -137,6 +137,11 @@ public class RobotHeroController : MonoBehaviour
                 other.gameObject.SetActive(false);
                 this.hasKey3 = true;
                 break;
+            case "Respawn":
+                spawn = other.gameObject;
+                transform.parent = spawn.transform;
+                mainCamera.transform.parent = spawn.transform;
+                break;
         }
     }
 
@@ -161,6 +166,7 @@ public class RobotHeroController : MonoBehaviour
         this.rifleController.isFiring = true;
         this.rifleController.Shoot();
         this.rifleController.isFiring = false;
+        GetComponent<AudioSource>().Play();
     }
 
     public Vector3 GetMoveDir()

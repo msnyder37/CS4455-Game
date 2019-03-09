@@ -21,6 +21,7 @@ public class PlayerHealthDamage : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             PlayerHealth.health_player -= damage_amount;
+            EventManager.TriggerEvent<PlayerDamageEvent, PlayerHealthDamage>(this);
         }
     }
 }

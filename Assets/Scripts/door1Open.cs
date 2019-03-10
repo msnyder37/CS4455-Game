@@ -23,6 +23,7 @@ public class door1Open : MonoBehaviour
         if (other.gameObject.tag == "Player" && playerScript.hasKey1 == true)
         {
             animator.enabled = true;
+            GetComponent<AudioSource>().Play();
         }
         else if (other.gameObject.tag == "Player" && playerScript.hasKey1 == false){
             TextVisible = true;

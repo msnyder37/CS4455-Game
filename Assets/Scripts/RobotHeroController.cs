@@ -121,6 +121,7 @@ public class RobotHeroController : MonoBehaviour
                 break;
             case "Kill Plane":
                 this.transform.position = spawn.transform.position;
+                EventManager.TriggerEvent<PlayerFallingEvent, RobotHeroController>(this);
                 break;
             case "Moving Platform":
                 this.transform.SetParent(other.gameObject.transform);
@@ -136,6 +137,11 @@ public class RobotHeroController : MonoBehaviour
             case "Key 3":
                 other.gameObject.SetActive(false);
                 this.hasKey3 = true;
+                break;
+            case "Respawn":
+                spawn = other.gameObject;
+                transform.parent = spawn.transform;
+                mainCamera.transform.parent = spawn.transform;
                 break;
         }
     }
@@ -161,6 +167,8 @@ public class RobotHeroController : MonoBehaviour
         this.rifleController.isFiring = true;
         this.rifleController.Shoot();
         this.rifleController.isFiring = false;
+        EventManager.TriggerEvent<PlayerGunshotEvent, RobotHeroController>(this);
+
     }
 
     public Vector3 GetMoveDir()

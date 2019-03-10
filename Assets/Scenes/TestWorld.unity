@@ -51,8 +51,8 @@ LightmapSettings:
     m_IndirectOutputScale: 1
     m_AlbedoBoost: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
-    m_EnableRealtimeLightmaps: 1
+    m_EnableBakedLightmaps: 0
+    m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
     serializedVersion: 10
     m_Resolution: 2
@@ -4565,7 +4565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1372a48d79722c346b4aca40538b2bc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spin_speed: 0
+  spin_speed: 0.8
 --- !u!54 &559741891
 Rigidbody:
   m_ObjectHideFlags: 0

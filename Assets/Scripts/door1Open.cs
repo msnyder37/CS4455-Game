@@ -10,12 +10,14 @@ public class door1Open : MonoBehaviour
     public Text HintText;
 
     private bool TextVisible;
+    private bool doorOpened;
     private float timer;
 
     void Start(){
         HintText.text = "";
         TextVisible = false;
         timer = 6f;
+        doorOpened = false;
     }
 
     void OnTriggerEnter(Collider other)
@@ -23,9 +25,11 @@ public class door1Open : MonoBehaviour
         if (other.gameObject.tag == "Player" && playerScript.hasKey1 == true)
         {
             animator.enabled = true;
-            GetComponent<AudioSource>().Play();
+            EventManager.TriggerEvent<DoorOpeningEvent, GameObject>(transform.gameObject);
+            doorOpened = true;
+            playerScript.hasKey1 = false;
         }
-        else if (other.gameObject.tag == "Player" && playerScript.hasKey1 == false){
+        else if (other.gameObject.tag == "Player" && playerScript.hasKey1 == false && !doorOpened){
             TextVisible = true;
             HintText.text = "Hmm.. An access card is required. Perhaps, I can find it somewhere...";
         }

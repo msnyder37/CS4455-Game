@@ -2343,7 +2343,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: OptionsClicked
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
       - m_Target: {fileID: 1403580269}
         m_MethodName: ResetTrigger
         m_Mode: 5

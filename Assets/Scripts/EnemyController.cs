@@ -93,6 +93,7 @@ public class EnemyController : MonoBehaviour
     		health--;
     		if (health <= 0) {
     			Destroy(transform.gameObject);
+                EventManager.TriggerEvent<RobotDeathEvent, EnemyController>(this);
 
     		}
     	}
@@ -112,7 +113,7 @@ public class EnemyController : MonoBehaviour
 	    	Transform gun = transform.GetChild(0).GetChild(0);
 	    	Transform bc = Instantiate(bullet, new Vector3(gun.position.x, gun.position.y, gun.position.z), gun.rotation);
 	    	bc.gameObject.GetComponent<BulletController>().speed = bulletSpeed;
-
+            GetComponent<AudioSource>().Play();
 
     	}
     }

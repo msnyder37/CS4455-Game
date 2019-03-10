@@ -59,7 +59,7 @@ public class RobotHeroController : MonoBehaviour
                 GameObject newRifle = Instantiate<GameObject>(this.rifle);
                 newRifle.transform.parent = this.rifleBone;
                 newRifle.transform.localPosition = Vector3.zero;
-                newRifle.transform.localRotation = Quaternion.Euler(90, 0, 0);
+                newRifle.transform.localRotation = Quaternion.Euler(100, 0, 0);
                 newRifle.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
 
                 this.rifleController = newRifle.GetComponent<GunController>();
@@ -95,17 +95,7 @@ public class RobotHeroController : MonoBehaviour
         this.animator.SetFloat("Forward", forward);
         this.animator.SetFloat("Turn", turn);
 
-        // move towards desired angle
-        float angleX = Input.GetAxisRaw("AngleX");
-        float angleY = Input.GetAxisRaw("AngleY");
-
-        if (angleX != 0.0f || angleY != 0.0f)
-        {
-            float desiredAngle = Mathf.Atan2(angleX, angleY) * Mathf.Rad2Deg;
-            Quaternion targetRotation = Quaternion.Euler(this.transform.rotation.eulerAngles.x, desiredAngle, this.transform.eulerAngles.z);
-
-            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, Time.deltaTime * this.angleRate);
-        }
+        this.RotationInputHandler();
     }
 
     void OnTriggerEnter(Collider other)
@@ -161,6 +151,45 @@ public class RobotHeroController : MonoBehaviour
         }
     }
 
+    private void RotationInputHandler()
+    {
+        if (this.UsingController())
+        {
+            // move towards desired angle from controller right joystick
+            float angleX = Input.GetAxisRaw("AngleX");
+            float angleY = Input.GetAxisRaw("AngleY");
+
+            this.TurnTowardsPoint(angleX, angleY);
+        }
+        else
+        {
+            // move towards angle defined by the mouse location
+            Plane playerPlane = new Plane(Vector3.down, this.transform.position);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (playerPlane.Raycast(ray, out float distance))
+            {
+                Vector3 point = ray.GetPoint(distance);
+
+                float deltaZ = point.z - this.transform.position.z;
+                float deltaX = point.x - this.transform.position.x;
+
+                this.TurnTowardsPoint(deltaZ, deltaX);
+            }
+        }
+    }
+
+    private void TurnTowardsPoint(float horizontalDiff, float verticalDiff)
+    {
+        if (verticalDiff != 0.0f || horizontalDiff != 0.0f)
+        {
+            float desiredAngle = Mathf.Atan2(verticalDiff, horizontalDiff) * Mathf.Rad2Deg;
+            Quaternion targetRotation = Quaternion.Euler(this.transform.rotation.eulerAngles.x, desiredAngle, this.transform.eulerAngles.z);
+
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, Time.deltaTime * this.angleRate);
+        }
+    }
+
     void FireRifle()
     {
         // triggered by animation event to fire the bullet at the right time
@@ -180,5 +209,10 @@ public class RobotHeroController : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics.Raycast(this.hipBone.position, Vector3.down, this.distanceToGround + 0.1f);
+    }
+
+    private bool UsingController()
+    {
+        return Input.GetJoystickNames().Length > 0;
     }
 }

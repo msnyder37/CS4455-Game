@@ -51,8 +51,8 @@ LightmapSettings:
     m_IndirectOutputScale: 1
     m_AlbedoBoost: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
-    m_EnableRealtimeLightmaps: 1
+    m_EnableBakedLightmaps: 0
+    m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
     serializedVersion: 10
     m_Resolution: 2
@@ -4758,7 +4758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1372a48d79722c346b4aca40538b2bc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spin_speed: 0
+  spin_speed: 0.8
 --- !u!54 &559741891
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -21556,6 +21556,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 3748902743755919442, guid: 465ebfe9e13a146fa985eb552572d370,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3aff8d59a996b4f638e4f8a7cc79d9eb, type: 2}
     m_RemovedComponents:
     - {fileID: 3748902743307442095, guid: 465ebfe9e13a146fa985eb552572d370, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 465ebfe9e13a146fa985eb552572d370, type: 3}

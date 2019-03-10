@@ -51,7 +51,7 @@ public class GunController : MonoBehaviour
                     //}
 
                     //Debug.DrawRay(ray.origin, ray.direction * shootDistance, Color.red, 1);
-                    BulletController nb = Instantiate(bullet, spawn.position, spawn.rotation) as BulletController;
+                    BulletController nb = Instantiate(bullet, spawn.position, Quaternion.Euler(0, spawn.rotation.eulerAngles.y, spawn.rotation.eulerAngles.z)) as BulletController;
                     nb.speed = speed;
 
                     //Keep track of ammo - Bishoy

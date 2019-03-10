@@ -59,7 +59,7 @@ public class RobotHeroController : MonoBehaviour
                 GameObject newRifle = Instantiate<GameObject>(this.rifle);
                 newRifle.transform.parent = this.rifleBone;
                 newRifle.transform.localPosition = Vector3.zero;
-                newRifle.transform.localRotation = Quaternion.Euler(90, 0, 0);
+                newRifle.transform.localRotation = Quaternion.Euler(100, 0, 0);
                 newRifle.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
 
                 this.rifleController = newRifle.GetComponent<GunController>();

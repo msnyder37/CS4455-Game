@@ -9,6 +9,14 @@ TagManager:
   - Obstacle
   - Bullet
   - Target
+  - Destructible
+  - Indestructible
+  - Kill Plane
+  - Moving Platform
+  - Key 1
+  - Key 2
+  - Key 3
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
@@ -19,9 +27,9 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
-  - 
+  - PlayerPhysicsLayer
+  - EnemyPhysicsLayer
+  - EnemyAttacksLayer
   - 
   - 
   - 

@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
     //https://forum.unity.com/threads/solved-random-wander-ai-using-navmesh.327950/
     public GameObject player;
     public Transform spawn;
+    public Transform gunOrigin;
     public GameObject[] patrolPoints;
     public NavMeshAgent agent;
     public float stoppingDistance;
@@ -39,45 +40,60 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
 
-        if(!Physics.Linecast(transform.position,player.transform.position,10) && Vector3.Distance(transform.position, player.transform.position) < sightRadius){
+        if (!Physics.Linecast(transform.position, player.transform.position, 10) && Vector3.Distance(transform.position, player.transform.position) < sightRadius)
+        {
             Attack();
-        } else {
-            if (!isStationary) {
-                if (isWandering) {
+        }
+        else
+        {
+            if (!isStationary)
+            {
+                if (isWandering)
+                {
                     changeWanderDirectionTimer += Time.deltaTime;
-                    if (changeWanderDirectionTimer >= wanderTimer) {
+                    if (changeWanderDirectionTimer >= wanderTimer)
+                    {
                         Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
                         agent.SetDestination(newPos);
                         changeWanderDirectionTimer = 0;
                     }
 
-                } else {
+                }
+                else
+                {
 
                     Patrol();
                 }
-            } else {
+            }
+            else
+            {
                 agent.isStopped = true;
             }
         }
 
     }
 
-    void Patrol(){
+    void Patrol()
+    {
         agent.isStopped = false;
-        if (!agent.pathPending && agent.remainingDistance < stoppingDistance) {
-            if(patrolPoints.Length > 0){
+        if (!agent.pathPending && agent.remainingDistance < stoppingDistance)
+        {
+            if (patrolPoints.Length > 0)
+            {
                 agent.SetDestination(patrolPoints[patrolPoint].transform.position);
 
                 patrolPoint++;
 
-                if(patrolPoint >= patrolPoints.Length){
+                if (patrolPoint >= patrolPoints.Length)
+                {
                     patrolPoint = 0;
                 }
             }
         }
     }
 
-    void Attack(){
+    void Attack()
+    {
         agent.isStopped = true;
         GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
         transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
@@ -86,46 +102,52 @@ public class EnemyController : MonoBehaviour
 
     }
 
-    void OnTriggerEnter(Collider c) {
+    void OnTriggerEnter(Collider c)
+    {
 
-    	if (c.gameObject.CompareTag("Bullet")) {
-    		// TODO: Play destruction animation
-    		health--;
-    		if (health <= 0) {
-    			Destroy(transform.gameObject);
+        if (c.gameObject.CompareTag("Bullet"))
+        {
+            // TODO: Play destruction animation
+            health--;
+            if (health <= 0)
+            {
+                Destroy(transform.gameObject);
                 EventManager.TriggerEvent<RobotDeathEvent, EnemyController>(this);
 
-    		}
-    	}
-    	if (c.gameObject.CompareTag("Player")) {
-    		// Rigidbody rb = c.gameObject.GetComponent<Rigidbody>();
-    		// rb.AddForce(rb.velocity *= -3);
-    		// Debug.Log("in me");
-    	}
+            }
+        }
+        if (c.gameObject.CompareTag("Player"))
+        {
+            // Rigidbody rb = c.gameObject.GetComponent<Rigidbody>();
+            // rb.AddForce(rb.velocity *= -3);
+            // Debug.Log("in me");
+        }
     }
 
-    void Shoot() {
+    void Shoot()
+    {
 
-    	shotClock -= Time.deltaTime;
-    	if (shotClock <= 0) {
-    		// Debug.Log("Shoot");
+        shotClock -= Time.deltaTime;
+        if (shotClock <= 0)
+        {
+            // Debug.Log("Shoot");
             shotClock = cooldown;
-	    	Transform gun = transform.GetChild(0).GetChild(0);
-	    	Transform bc = Instantiate(bullet, new Vector3(gun.position.x, gun.position.y, gun.position.z), gun.rotation);
-	    	bc.gameObject.GetComponent<BulletController>().speed = bulletSpeed;
+            Transform bc = Instantiate(bullet, new Vector3(gunOrigin.position.x, gunOrigin.position.y, gunOrigin.position.z), this.transform.rotation);
+            bc.gameObject.GetComponent<BulletController>().speed = bulletSpeed;
             GetComponent<AudioSource>().Play();
 
-    	}
+        }
     }
 
-    public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask) {
+    public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
+    {
         Vector3 randDirection = Random.insideUnitSphere * dist;
 
         randDirection += origin;
 
         NavMeshHit navHit;
 
-        NavMesh.SamplePosition (randDirection, out navHit, dist, layermask);
+        NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
 
         return navHit.position;
     }

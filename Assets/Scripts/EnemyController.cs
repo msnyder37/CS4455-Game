@@ -27,18 +27,28 @@ public class EnemyController : MonoBehaviour
     private int patrolPoint = 0;
     private float shotClock;
     private float changeWanderDirectionTimer;
-
+    private Animator animator;
 
     void Start()
     {
         stoppingDistance = .4f;
         changeWanderDirectionTimer = wanderTimer;
-
-
+        animator = GetComponent<Animator>();
+        agent.updatePosition = false;
     }
 
     void Update()
     {
+        Vector3 globalVelocity = agent.velocity;
+
+        // convert to local frame
+        float forward = Vector3.Dot(globalVelocity, this.transform.forward);
+        float right = Vector3.Dot(globalVelocity, this.transform.right);
+        Vector3 localVelocity = new Vector3(right, 0, forward);
+        localVelocity = Vector3.Normalize(localVelocity);
+
+        this.animator.SetFloat("Right", localVelocity.x);
+        this.animator.SetFloat("Forward", localVelocity.z);
 
         if (!Physics.Linecast(transform.position, player.transform.position, 10) && Vector3.Distance(transform.position, player.transform.position) < sightRadius)
         {
@@ -98,8 +108,6 @@ public class EnemyController : MonoBehaviour
         GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
         transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
         Shoot();
-
-
     }
 
     void OnTriggerEnter(Collider c)
@@ -122,6 +130,13 @@ public class EnemyController : MonoBehaviour
             // rb.AddForce(rb.velocity *= -3);
             // Debug.Log("in me");
         }
+    }
+
+    void OnAnimatorMove()
+    {
+        Vector3 position = animator.rootPosition;
+        transform.position = position;
+        agent.nextPosition = position;
     }
 
     void Shoot()

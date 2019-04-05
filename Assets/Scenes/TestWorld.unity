@@ -20295,7 +20295,7 @@ MonoBehaviour:
   rifle: {fileID: 100000, guid: d992a232642f7574b80a75c2ca4b4cb8, type: 3}
   rifleBone: {fileID: 2115590807}
   hipBone: {fileID: 2115590808}
-  angleRate: 5
+  angleRate: 15
   jumpForce: 11.5
   spawn: {fileID: 1141008145}
   hasKey1: 0

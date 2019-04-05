@@ -8,20 +8,32 @@ public class PlayerHealthDamage : MonoBehaviour
     GameObject thePlayer;
     PlayerHealth PlayerHealth;
     public float damage_amount = 0.1f;
+    public float cooldown = 2.0f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    private float clock;
+
+    void Start() {
         thePlayer = GameObject.Find("Soldier");
         PlayerHealth = thePlayer.GetComponent<PlayerHealth>();
+
+        clock = cooldown;
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
+    void OnTriggerEnter(Collider other) {
+        if (other.gameObject.tag == "Player") {
             PlayerHealth.health_player -= damage_amount;
             EventManager.TriggerEvent<PlayerDamageEvent, PlayerHealthDamage>(this);
+        }
+    }
+
+    void OnTriggerStay(Collider other) {
+        clock -= Time.deltaTime;
+        if (other.gameObject.tag == "Player") {
+            if (clock < 0) {
+                clock = cooldown;
+                PlayerHealth.health_player -= damage_amount;
+                EventManager.TriggerEvent<PlayerDamageEvent, PlayerHealthDamage>(this);
+            }
         }
     }
 }

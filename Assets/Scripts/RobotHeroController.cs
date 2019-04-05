@@ -159,7 +159,7 @@ public class RobotHeroController : MonoBehaviour
             float angleX = Input.GetAxisRaw("AngleX");
             float angleY = Input.GetAxisRaw("AngleY");
 
-            this.TurnTowardsPoint(angleX, angleY);
+            this.TurnTowardsPoint(angleY, angleX);
         }
         else
         {

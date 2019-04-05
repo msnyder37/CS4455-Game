@@ -95,8 +95,8 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: "Avatar Rig Configuration mis-match. Bone length in configuration
       does not match position in animation file:\n\t'L_Upperleg' : position error
-      = 1458.177612 mm\n\t'L_Lowerleg' : position error = 5511.014160 mm\n\t'L_Toe'
-      : position error = 24.656364 mm\n\t'R_Lowerleg' : position error = 7048.363281
+      = 1458.261475 mm\n\t'L_Lowerleg' : position error = 1486.175781 mm\n\t'L_Toe'
+      : position error = 24.658859 mm\n\t'R_Lowerleg' : position error = 1554.734009
       mm\n"
     animationImportErrors: 
     animationImportWarnings: 
@@ -373,7 +373,7 @@ ModelImporter:
     - name: Stomach
       parentName: Mr Grey(Clone)
       position: {x: 0, y: 0.7613678, z: 0}
-      rotation: {x: 0.44290826, y: 0.51130897, z: 0.48102564, w: 0.55768263}
+      rotation: {x: 0.44290823, y: 0.51130897, z: 0.4810256, w: 0.55768263}
       scale: {x: 0.010000001, y: 0.01, z: 0.01}
     - name: Chest
       parentName: Stomach
@@ -387,8 +387,8 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: Head
       parentName: Neck
-      position: {x: -14.643507, y: 3.5527137e-14, z: -2.3869795e-15}
-      rotation: {x: 0.0029233939, y: -0.01948373, z: 0.13346618, w: 0.99085754}
+      position: {x: -14.643932, y: 0.001450181, z: -0.0005864538}
+      rotation: {x: 0.0035701059, y: -0.010997704, z: 0.03677675, w: 0.9992566}
       scale: {x: 1, y: 1, z: 1}
     - name: Top
       parentName: Head
@@ -472,7 +472,7 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: L_Lowerleg
       parentName: L_Upperleg
-      position: {x: -35.3, y: 1.9, z: -1.6}
+      position: {x: -35.1, y: 0.5, z: -4.8}
       rotation: {x: -0.23784265, y: -0.021383345, z: 0.06614166, w: 0.9688131}
       scale: {x: 1, y: 1, z: 1}
     - name: L_foot
@@ -487,7 +487,7 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: L_End
       parentName: L_Toe
-      position: {x: -5.579948, y: -0.0000019570996, z: -0.00000007204829}
+      position: {x: -6.1, y: -0.8, z: 0}
       rotation: {x: 0.6752855, y: -0.20973673, z: -0.6752855, w: -0.20973673}
       scale: {x: 1, y: 1, z: 1}
     - name: R_Upperleg
@@ -497,7 +497,7 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: R_Lowerleg
       parentName: R_Upperleg
-      position: {x: 35.2, y: 2, z: 0.2}
+      position: {x: 35.1, y: 0.4, z: 4.7}
       rotation: {x: 0.14356352, y: -0.02668636, z: 0.11402173, w: 0.98268837}
       scale: {x: 1, y: 1, z: 1}
     - name: R_foot

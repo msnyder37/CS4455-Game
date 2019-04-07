@@ -117,14 +117,17 @@ public class RobotHeroController : MonoBehaviour
                 this.transform.SetParent(other.gameObject.transform);
                 break;
             case "Key 1":
+                AudioSource.PlayClipAtPoint(other.gameObject.GetComponent<AudioSource>().clip, GameObject.Find("Main Camera").transform.position);
                 other.gameObject.SetActive(false);
                 this.hasKey1 = true;
                 break;
             case "Key 2":
+                AudioSource.PlayClipAtPoint(other.gameObject.GetComponent<AudioSource>().clip, GameObject.Find("Main Camera").transform.position);
                 other.gameObject.SetActive(false);
                 this.hasKey2 = true;
                 break;
             case "Key 3":
+                AudioSource.PlayClipAtPoint(other.gameObject.GetComponent<AudioSource>().clip, GameObject.Find("Main Camera").transform.position);
                 other.gameObject.SetActive(false);
                 this.hasKey3 = true;
                 break;

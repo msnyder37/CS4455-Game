@@ -12,6 +12,8 @@ public class EnemyController : MonoBehaviour
     public Transform gunOrigin;
     public GameObject[] patrolPoints;
     public NavMeshAgent agent;
+    public GameObject animation;
+    public float animDuration;
     public float stoppingDistance;
     public float turnSpeed;
     public int health;
@@ -119,7 +121,9 @@ public class EnemyController : MonoBehaviour
             health--;
             if (health <= 0)
             {
+                GameObject obj = Instantiate(animation, transform.position, transform.rotation);
                 Destroy(transform.gameObject);
+                Destroy(obj, animDuration);
                 EventManager.TriggerEvent<RobotDeathEvent, EnemyController>(this);
 
             }

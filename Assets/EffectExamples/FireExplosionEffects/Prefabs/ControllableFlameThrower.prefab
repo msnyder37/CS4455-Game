@@ -4860,6 +4860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage_amount: 0.1
+  cooldown: 2
 --- !u!65 &3553819740549575106
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -14,8 +14,9 @@ public class door2open : MonoBehaviour
 
     void Start(){
         HintText.text = "";
+        HintText.color = Color.red;
         TextVisible = false;
-        timer = 6f;
+        timer = 1f;
     }
 
     void OnTriggerEnter(Collider other)
@@ -23,10 +24,11 @@ public class door2open : MonoBehaviour
         if (other.gameObject.tag == "Player" && playerScript.hasKey2 == true)
         {
             animator.enabled = true;
+            GetComponent<AudioSource>().Play();
         }
         else if (other.gameObject.tag == "Player" && playerScript.hasKey2 == false){
             TextVisible = true;
-            HintText.text = "Hmm.. yet another access card is required. Perhaps, I should look for it...";
+            HintText.text = "Access Denied";
         }
     }
 

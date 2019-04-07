@@ -35,6 +35,7 @@ public class Destructible : MonoBehaviour
 
     void Explode() {
     	GameObject obj = Instantiate(animation, transform.position, transform.rotation);
+    	AudioSource.PlayClipAtPoint(GetComponent<AudioSource>().clip, GameObject.Find("Main Camera").transform.position);
     	Destroy(this.gameObject);
     	Destroy(obj, animDuration);
     }

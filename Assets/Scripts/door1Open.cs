@@ -14,8 +14,9 @@ public class door1Open : MonoBehaviour
 
     void Start(){
         HintText.text = "";
+        HintText.color = Color.red;
         TextVisible = false;
-        timer = 6f;
+        timer = 1f;
     }
 
     void OnTriggerEnter(Collider other)
@@ -27,7 +28,7 @@ public class door1Open : MonoBehaviour
         }
         else if (other.gameObject.tag == "Player" && playerScript.hasKey1 == false){
             TextVisible = true;
-            HintText.text = "Hmm.. An access card is required. Perhaps, I can find it somewhere...";
+            HintText.text = "Access Denied";
         }
     }
 

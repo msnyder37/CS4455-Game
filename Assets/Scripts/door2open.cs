@@ -10,6 +10,7 @@ public class door2open : MonoBehaviour
     public Text HintText;
 
     private bool TextVisible;
+    private bool doorOpened;
     private float timer;
 
     void Start(){
@@ -17,16 +18,21 @@ public class door2open : MonoBehaviour
         HintText.color = Color.red;
         TextVisible = false;
         timer = 1f;
+        doorOpened = false;
+
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player" && playerScript.hasKey2 == true)
         {
+            EventManager.TriggerEvent<DoorOpeningEvent, GameObject>(transform.gameObject);
             animator.enabled = true;
-            GetComponent<AudioSource>().Play();
+            doorOpened = true;
+            playerScript.hasKey2 = false;
+
         }
-        else if (other.gameObject.tag == "Player" && playerScript.hasKey2 == false){
+        else if (other.gameObject.tag == "Player" && playerScript.hasKey2 == false && !doorOpened){
             TextVisible = true;
             HintText.text = "Access Denied";
         }

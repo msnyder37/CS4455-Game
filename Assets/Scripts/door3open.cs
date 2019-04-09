@@ -10,6 +10,7 @@ public class door3open : MonoBehaviour
     public Text HintText;
 
     private bool TextVisible;
+    private bool doorOpened;
     private float timer;
 
     void Start(){
@@ -17,6 +18,8 @@ public class door3open : MonoBehaviour
         HintText.color = Color.red;
         TextVisible = false;
         timer = 1f;
+        doorOpened = false;
+
     }
 
     void OnTriggerEnter(Collider other)
@@ -24,9 +27,11 @@ public class door3open : MonoBehaviour
         if (other.gameObject.tag == "Player" && playerScript.hasKey3 == true)
         {
             animator.enabled = true;
-            GetComponent<AudioSource>().Play();
-        }
-        else if (other.gameObject.tag == "Player" && playerScript.hasKey3 == false){
+            EventManager.TriggerEvent<DoorOpeningEvent, GameObject>(transform.gameObject);
+            playerScript.hasKey3 = false;
+            doorOpened = true;
+
+        } else if (other.gameObject.tag == "Player" && playerScript.hasKey3 == false && !doorOpened){
             TextVisible = true;
             HintText.text = "Access Denied";
         }

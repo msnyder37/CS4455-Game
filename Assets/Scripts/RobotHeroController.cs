@@ -72,7 +72,14 @@ public class RobotHeroController : MonoBehaviour
         if (Input.GetButtonDown("Fire2"))
         {
             // fire the gun or punch
-            this.animator.SetTrigger("Action");
+            if (this.carryRifle)
+            {
+                this.FireRifle();
+            }
+            else
+            {
+                this.animator.SetTrigger("Action");
+            }
         }
 
         if (Input.GetButtonDown("Jump") && this.IsGrounded())

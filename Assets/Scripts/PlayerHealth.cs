@@ -17,7 +17,7 @@ public class PlayerHealth : MonoBehaviour
 
         //If healthbar drops too low, load the game over screen
         if (health_player < 0.01f){
-            SceneManager.LoadScene ("GameOver");
+            //SceneManager.LoadScene ("GameOver");
         }
     }
 }

@@ -4,48 +4,41 @@ using UnityEngine;
 
 public class UnderGroundPassageScript : MonoBehaviour
 {
-
     Animator anim;
+    float startTime = 0.0f;
+    float timer;
     // Start is called before the first frame update
     void Start()
     {
+        timer = 0.0f;
         anim = GetComponent<Animator>();
         anim.enabled = false;
+        
     }
 
     // Update is called once per frame
-    float timer = 0.0f;
-    int second;
-    void Update()
+    private void Update()
     {
-    /*    timer += Time.deltaTime;
-        second = (int)(timer);
-        if (second > 10)
+        if (startTime != 0.0f)
+        {
+            timer = Time.deltaTime;
+        }
+
+        if (timer - 5.0f > startTime)
         {
             anim.enabled = false;
         }
-        Debug.Log(timer);
-        */
     }
 
-    bool stop = false;
-    
-    void OnTriggerEnter(Collider other)
+
+    void OnTriggerExit(Collider other)
     {
-        Debug.Log("                                                " + other);
-        //if (!stop)
-        //{
-            if (other.gameObject.tag == "Destructable")
-            {
-                anim.enabled = false;
-            }
-            else
-            {
-                anim.enabled = true;
-                stop = true;
-            }
-        //}
+        if (other.gameObject.tag == "Destructible")
+        {
+            startTime = Time.deltaTime;
+            anim.enabled = true;
+        }
+        
         
     }
-    
 }

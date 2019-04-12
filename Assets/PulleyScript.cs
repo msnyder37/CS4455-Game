@@ -4,15 +4,15 @@ using UnityEngine;
 
 
 
-public class RopeScript : MonoBehaviour
+public class PulleyScript : MonoBehaviour
 {
-    //Rigidbody rigid;
-    public float speed = -1.5f;
-    public bool touch;
+    Rigidbody rigid;
+    float speed = -1.5f;
+    bool touch;
     // Start is called before the first frame update
     void Start()
     {
-        //rigid = GetComponent<Rigidbody>();
+        rigid = GetComponent<Rigidbody>();
         touch = true;
     }
 
@@ -20,21 +20,13 @@ public class RopeScript : MonoBehaviour
     void Update()
     {
         if (!touch)
-            transform.Translate(0, Time.deltaTime * speed, 0);
+        transform.Translate(0, Time.deltaTime * speed, 0);
     }
 
     void OnTriggerEnter(Collider other)
     {
         //transform.Translate(0, Time.deltaTime * speed, 0);
-        if (other.gameObject.tag == "Rope")
-        {
-            touch = true;
-        }
-    }
-
-    void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "Rope")
+        if (other.gameObject.tag == "Destructible")
         {
             touch = true;
         }
@@ -42,14 +34,9 @@ public class RopeScript : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Rope")
+        if (other.gameObject.tag == "Destructible")
         {
             touch = false;
         }
-    }
-
-    public bool getTouch()
-    {
-        return touch;
     }
 }

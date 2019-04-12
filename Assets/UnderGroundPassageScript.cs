@@ -18,13 +18,14 @@ public class UnderGroundPassageScript : MonoBehaviour
     int second;
     void Update()
     {
-        timer += Time.deltaTime;
+    /*    timer += Time.deltaTime;
         second = (int)(timer);
         if (second > 10)
         {
             anim.enabled = false;
         }
         Debug.Log(timer);
+        */
     }
 
     bool stop = false;
@@ -32,8 +33,8 @@ public class UnderGroundPassageScript : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("                                                " + other);
-        if (!stop)
-        {
+        //if (!stop)
+        //{
             if (other.gameObject.tag == "Destructable")
             {
                 anim.enabled = false;
@@ -43,7 +44,7 @@ public class UnderGroundPassageScript : MonoBehaviour
                 anim.enabled = true;
                 stop = true;
             }
-        }
+        //}
         
     }
     

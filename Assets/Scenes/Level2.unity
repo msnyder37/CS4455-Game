@@ -11998,8 +11998,6 @@ GameObject:
   - component: {fileID: 698571022}
   - component: {fileID: 698571021}
   - component: {fileID: 698571020}
-  - component: {fileID: 698571023}
-  - component: {fileID: 698571024}
   m_Layer: 0
   m_Name: Plane (16)
   m_TagString: Untagged
@@ -12015,7 +12013,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 698571018}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.10999918, y: -0.0005004406, z: 17.93}
+  m_LocalPosition: {x: -0.10999918, y: -0.0005004406, z: 7.1694403}
   m_LocalScale: {x: 0.86714995, y: 1, z: 1.4280435}
   m_Children: []
   m_Father: {fileID: 1077881433}
@@ -12080,37 +12078,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 698571018}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!95 &698571023
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 698571018}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3d05e54011110d042b6cf8b2b81e22ff, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &698571024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 698571018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0299219184032504dbe685abb79de483, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &705628797
 GameObject:
   m_ObjectHideFlags: 0
@@ -17590,8 +17557,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1077881433}
   - component: {fileID: 1077881434}
-  - component: {fileID: 1077881435}
   - component: {fileID: 1077881436}
+  - component: {fileID: 1077881435}
   m_Layer: 0
   m_Name: DownPoint
   m_TagString: Untagged
@@ -17607,7 +17574,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077881432}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.81, y: -3.8, z: -33.48}
+  m_LocalPosition: {x: 1.81, y: -3.8, z: -14.24}
   m_LocalScale: {x: 1, y: 1, z: 1.7880108}
   m_Children:
   - {fileID: 698571019}
@@ -21399,7 +21366,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1969482352, guid: fb4d9b547ae94a748a40af30d02733f4, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1969482352, guid: fb4d9b547ae94a748a40af30d02733f4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -28192,7 +28159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.9, y: 0.1}
   m_AnchorMax: {x: 0.9, y: 0.1}
-  m_AnchoredPosition: {x: -37.75, y: -8.599976}
+  m_AnchoredPosition: {x: -37.75, y: -8.59996}
   m_SizeDelta: {x: 199.90002, y: 52.800003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1783520291

@@ -5,32 +5,27 @@ using UnityEngine;
 public class UnderGroundPassageScript : MonoBehaviour
 {
     Animator anim;
-    float startTime = 0.0f;
-    float timer;
+    public door3open d3;
+
     // Start is called before the first frame update
     void Start()
     {
-        timer = 0.0f;
         anim = GetComponent<Animator>();
         anim.enabled = false;
-        
+        //d3 = GameObject.Find("door3 control").GetComponent<door3open>();
     }
 
     // Update is called once per frame
-    private void Update()
+    void Update()
     {
-        if (startTime != 0.0f)
+        d3 = GameObject.Find("door3 control").GetComponent<door3open>();
+        if (d3.door3Pressed)
         {
-            timer = Time.deltaTime;
-        }
-
-        if (timer - 5.0f > startTime)
-        {
-            anim.enabled = false;
+            anim.enabled = true;
         }
     }
 
-
+    /*
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Destructible")
@@ -41,4 +36,5 @@ public class UnderGroundPassageScript : MonoBehaviour
         
         
     }
+    */
 }

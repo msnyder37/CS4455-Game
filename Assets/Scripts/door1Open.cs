@@ -8,6 +8,7 @@ public class door1Open : MonoBehaviour
     public Animator animator;
     public RobotHeroController playerScript;
     public Text HintText;
+    public ButtonScript bs;
 
     private bool TextVisible;
     private float timer;
@@ -20,14 +21,19 @@ public class door1Open : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player" && playerScript.hasKey1 == true)
+        if (other.gameObject.tag == "Player")
         {
-            animator.enabled = true;
-            GetComponent<AudioSource>().Play();
-        }
-        else if (other.gameObject.tag == "Player" && playerScript.hasKey1 == false){
-            TextVisible = true;
-            HintText.text = "Hmm.. An access card is required. Perhaps, I can find it somewhere...";
+            bs = GameObject.Find("Level1Button").GetComponent<ButtonScript>();
+            if (bs.isPressed)
+            {
+                //open
+                animator.enabled = true;
+                GetComponent<AudioSource>().Play();
+            } else
+            {
+                TextVisible = true;
+                HintText.text = "Access Denied. Press the red button first";
+            }
         }
     }
 

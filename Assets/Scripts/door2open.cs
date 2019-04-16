@@ -10,6 +10,7 @@ public class door2open : MonoBehaviour
     public Text HintText;
 
     private bool TextVisible;
+    private bool doorOpened;
     private float timer;
 
     AudioSource door_open_audio;
@@ -29,6 +30,7 @@ public class door2open : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" && playerScript.hasKey2 == true)
         {
+            EventManager.TriggerEvent<DoorOpeningEvent, GameObject>(transform.gameObject);
             animator.enabled = true;
             door_open_audio.Play();
             //GetComponent<AudioSource>().Play();

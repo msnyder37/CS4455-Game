@@ -12,19 +12,21 @@ public class EnemyController : MonoBehaviour
     public Transform gunOrigin;
     public GameObject[] patrolPoints;
     public NavMeshAgent agent;
+    public int health;
     public GameObject animation;
     public float animDuration;
     public float stoppingDistance;
     public float turnSpeed;
-    public int health;
     public float bulletSpeed;
     public float cooldown;
     public float sightRadius;
     public float wanderTimer;
     public float wanderRadius;
+    public float chaseSpeed;
     public Transform bullet;
     public bool isStationary;
     public bool isWandering;
+    public bool chasesPlayer;
 
     private int patrolPoint = 0;
     private float shotClock;
@@ -110,6 +112,10 @@ public class EnemyController : MonoBehaviour
         GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
         transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
         Shoot();
+        if (chasesPlayer) {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z), chaseSpeed);
+        }
+
     }
 
     void OnTriggerEnter(Collider c)
@@ -153,7 +159,7 @@ public class EnemyController : MonoBehaviour
             shotClock = cooldown;
             Transform bc = Instantiate(bullet, new Vector3(gunOrigin.position.x, gunOrigin.position.y, gunOrigin.position.z), this.transform.rotation);
             bc.gameObject.GetComponent<BulletController>().speed = bulletSpeed;
-            GetComponent<AudioSource>().Play();
+            EventManager.TriggerEvent<RobotGunShotEvent, EnemyController>(this);
 
         }
     }

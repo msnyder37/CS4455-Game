@@ -10,6 +10,7 @@ public class door1Open : MonoBehaviour
     public Text HintText;
 
     private bool TextVisible;
+    private bool doorOpened;
     private float timer;
 
     AudioSource door_open_audio;

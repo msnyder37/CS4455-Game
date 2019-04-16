@@ -59,7 +59,7 @@ public class RobotHeroController : MonoBehaviour
                 GameObject newRifle = Instantiate<GameObject>(this.rifle);
                 newRifle.transform.parent = this.rifleBone;
                 newRifle.transform.localPosition = Vector3.zero;
-                newRifle.transform.localRotation = Quaternion.Euler(100, 0, 0);
+                newRifle.transform.localRotation = Quaternion.Euler(110, -52.5f, -42.5f);
                 newRifle.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
 
                 this.rifleController = newRifle.GetComponent<GunController>();
@@ -72,7 +72,14 @@ public class RobotHeroController : MonoBehaviour
         if (Input.GetButtonDown("Fire2"))
         {
             // fire the gun or punch
-            this.animator.SetTrigger("Action");
+            if (this.carryRifle)
+            {
+                this.FireRifle();
+            }
+            else
+            {
+                this.animator.SetTrigger("Action");
+            }
         }
 
         if (Input.GetButtonDown("Jump") && this.IsGrounded())

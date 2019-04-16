@@ -13,13 +13,17 @@ public class door2open : MonoBehaviour
     private bool doorOpened;
     private float timer;
 
+    AudioSource door_open_audio;
+    AudioSource access_denied_audio;
+
     void Start(){
         HintText.text = "";
         HintText.color = Color.red;
         TextVisible = false;
         timer = 1f;
-        doorOpened = false;
-
+        AudioSource[] audios = GetComponents<AudioSource>();
+        door_open_audio = audios[0];
+        access_denied_audio = audios[1];
     }
 
     void OnTriggerEnter(Collider other)
@@ -28,13 +32,13 @@ public class door2open : MonoBehaviour
         {
             EventManager.TriggerEvent<DoorOpeningEvent, GameObject>(transform.gameObject);
             animator.enabled = true;
-            doorOpened = true;
-            playerScript.hasKey2 = false;
-
+            door_open_audio.Play();
+            //GetComponent<AudioSource>().Play();
         }
-        else if (other.gameObject.tag == "Player" && playerScript.hasKey2 == false && !doorOpened){
-            TextVisible = true;
-            HintText.text = "Access Denied";
+        else if (other.gameObject.tag == "Player" && playerScript.hasKey2 == false){
+            access_denied_audio.Play();
+            //TextVisible = true;
+            //HintText.text = "Access Denied";
         }
     }
 

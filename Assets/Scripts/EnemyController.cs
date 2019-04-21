@@ -22,11 +22,13 @@ public class EnemyController : MonoBehaviour
     public float sightRadius;
     public float wanderTimer;
     public float wanderRadius;
-    public float chaseSpeed;
+    public float chaseSpeed = .1f;
+    public float normalSpeed = .05f;
     public Transform bullet;
     public bool isStationary;
     public bool isWandering;
     public bool chasesPlayer;
+    public bool isTurret= false;
 
     private int patrolPoint = 0;
     private float shotClock;
@@ -90,6 +92,7 @@ public class EnemyController : MonoBehaviour
     void Patrol()
     {
         agent.isStopped = false;
+        agent.speed = normalSpeed;
         if (!agent.pathPending && agent.remainingDistance < stoppingDistance)
         {
             if (patrolPoints.Length > 0)
@@ -111,9 +114,17 @@ public class EnemyController : MonoBehaviour
         agent.isStopped = true;
         GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
         transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
+        if(isTurret) {
+            transform.Rotate(0, -90, 0, Space.World);
+        }
         Shoot();
         if (chasesPlayer) {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z), chaseSpeed);
+            agent.isStopped = false;
+            if(!agent.pathPending) {
+                agent.SetDestination(player.transform.position);
+                agent.speed = chaseSpeed;
+            }
+
         }
 
     }
@@ -157,7 +168,17 @@ public class EnemyController : MonoBehaviour
         {
             // Debug.Log("Shoot");
             shotClock = cooldown;
-            Transform bc = Instantiate(bullet, new Vector3(gunOrigin.position.x, gunOrigin.position.y, gunOrigin.position.z), this.transform.rotation);
+            Transform bc;
+            if (isTurret) {
+                bc = Instantiate(bullet, new Vector3(gunOrigin.position.x, gunOrigin.position.y, gunOrigin.position.z), Quaternion.Euler(new Vector3(transform.eulerAngles.x,
+                    transform.eulerAngles.y + 90,
+                    transform.eulerAngles.z)));
+
+                } else {
+                    bc = Instantiate(bullet, new Vector3(gunOrigin.position.x, gunOrigin.position.y, gunOrigin.position.z), transform.rotation);
+                }
+
+
             bc.gameObject.GetComponent<BulletController>().speed = bulletSpeed;
             EventManager.TriggerEvent<RobotGunShotEvent, EnemyController>(this);
 

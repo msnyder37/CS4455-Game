@@ -17,7 +17,6 @@ TagManager:
   - Key 2
   - Key 3
   - EnemyBullet
-  - Rope
   layers:
   - Default
   - TransparentFX

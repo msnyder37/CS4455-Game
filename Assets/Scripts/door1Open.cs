@@ -11,29 +11,36 @@ public class door1Open : MonoBehaviour
     public ButtonScript bs;
 
     private bool TextVisible;
+    private bool doorOpened;
     private float timer;
+
+    AudioSource door_open_audio;
+    AudioSource access_denied_audio;
 
     void Start(){
         HintText.text = "";
+        HintText.color = Color.red;
         TextVisible = false;
-        timer = 6f;
+        timer = 1f;
+        AudioSource[] audios = GetComponents<AudioSource>();
+        door_open_audio = audios[0];
+        access_denied_audio = audios[1];
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            bs = GameObject.Find("Level1Button").GetComponent<ButtonScript>();
-            if (bs.isPressed)
-            {
-                //open
-                animator.enabled = true;
-                GetComponent<AudioSource>().Play();
-            } else
-            {
-                TextVisible = true;
-                HintText.text = "Access Denied. Press the red button first";
-            }
+            animator.enabled = true;
+            //GetComponent<AudioSource>().Play();
+            door_open_audio.Play();
+        }
+        else if (other.gameObject.tag == "Player" && playerScript.hasKey1 == false){
+            //TextVisible = true;
+            //HintText.text = "Access Denied";
+            access_denied_audio.Play();
+            //GetComponent<AudioSource>().Play();
+            //AudioSource.PlayClipAtPoint(other.gameObject.GetComponent<AudioSource>().clip, GameObject.Find("Main Camera").transform.position);
         }
     }
 

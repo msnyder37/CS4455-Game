@@ -8,6 +8,7 @@ public class door1Open : MonoBehaviour
     public Animator animator;
     public RobotHeroController playerScript;
     public Text HintText;
+    public ButtonScript bs;
 
     private bool TextVisible;
     private bool doorOpened;
@@ -28,7 +29,7 @@ public class door1Open : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player" && playerScript.hasKey1 == true)
+        if (other.gameObject.tag == "Player")
         {
             animator.enabled = true;
             //GetComponent<AudioSource>().Play();

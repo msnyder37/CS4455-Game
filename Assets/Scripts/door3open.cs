@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class door3open : MonoBehaviour
 {
+
     public Animator animator;
     public RobotHeroController playerScript;
     public Text HintText;
+    public bool door3Pressed;
 
     private bool TextVisible;
     private bool doorOpened;
@@ -24,12 +26,14 @@ public class door3open : MonoBehaviour
         AudioSource[] audios = GetComponents<AudioSource>();
         door_open_audio = audios[0];
         access_denied_audio = audios[1];
+        door3Pressed = false;
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player" && playerScript.hasKey3 == true)
+        if (other.gameObject.tag == "Player")
         {
+            door3Pressed = true;
             animator.enabled = true;
             door_open_audio.Play();
             //GetComponent<AudioSource>().Play();
@@ -41,15 +45,5 @@ public class door3open : MonoBehaviour
         }
     }
 
-    void Update(){
-        if (TextVisible == true){
-            timer -= Time.deltaTime;
-        }
-
-        if (timer <= 0 && TextVisible == true){
-            TextVisible = false;
-            HintText.text = "";
-            timer = 6f;
-        }
-    }
+    
 }

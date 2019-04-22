@@ -49,7 +49,7 @@ public class EnemyController : MonoBehaviour
         float forward = Vector3.Dot(globalVelocity, this.transform.forward);
         float right = Vector3.Dot(globalVelocity, this.transform.right);
         Vector3 localVelocity = new Vector3(right, 0, forward);
-        localVelocity = Vector3.Normalize(localVelocity);
+        localVelocity = Vector3.Normalize(localVelocity) * chaseSpeed;
 
         this.animator.SetFloat("Right", localVelocity.x);
         this.animator.SetFloat("Forward", localVelocity.z);
@@ -108,12 +108,13 @@ public class EnemyController : MonoBehaviour
 
     void Attack()
     {
-        agent.isStopped = true;
-        GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
+        // look at the player
         transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
         Shoot();
-        if (chasesPlayer) {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z), chaseSpeed);
+        if (chasesPlayer)
+        {
+            // agent should follow where player goes
+            agent.SetDestination(player.transform.position);
         }
 
     }

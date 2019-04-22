@@ -4,7 +4,12 @@ timeCreated: 1479828550
 licenseType: Store
 TextureImporter:
   fileIDToRecycleName: {}
+<<<<<<< HEAD:Assets/ProCore/ProBuilder/About/Images/Banner.png.meta
+  externalObjects: {}
+  serializedVersion: 7
+=======
   serializedVersion: 4
+>>>>>>> beta:Assets/Sci Fi Assets/PostProcessing/Utilities/CustomMotionTexture/Textures/DebugMotionVectors.png.meta
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0

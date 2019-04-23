@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3075898803300641434}
   - component: {fileID: 1097212648840962490}
   - component: {fileID: 1552988355929290495}
+  - component: {fileID: 8948355002662377740}
+  - component: {fileID: 6560936260929290893}
   m_Layer: 0
   m_Name: Teleporter
   m_TagString: Untagged
@@ -96,6 +98,32 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!136 &8948355002662377740
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429775039403986017}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.45
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &6560936260929290893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429775039403986017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5928081ae9bd7db43a8b6f76d9fdfdc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2158321523379655251
 GameObject:
   m_ObjectHideFlags: 0

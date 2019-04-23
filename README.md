@@ -1,4 +1,5 @@
 # CS4455-Game
 
 > Imported Assets
-    > Unity Particle Pack
+    > Unity Particle Pack (Asset Store)
+    > Sci-fi Gun (devassets.com)

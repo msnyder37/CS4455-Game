@@ -10147,14 +10147,16 @@ MonoBehaviour:
   turnSpeed: 1
   bulletSpeed: 20
   cooldown: 1
-  sightRadius: 15
+  sightRadius: 10
   wanderTimer: 1
   wanderRadius: 7
   chaseSpeed: 0
+  normalSpeed: 0.05
   bullet: {fileID: 8161022668314006977, guid: e042bde8f01a6bd40bc4d31ead848fa5, type: 3}
   isStationary: 0
   isWandering: 0
   chasesPlayer: 0
+  isTurret: 0
 --- !u!195 &3070002617525920677
 NavMeshAgent:
   m_ObjectHideFlags: 0

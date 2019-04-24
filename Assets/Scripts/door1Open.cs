@@ -29,7 +29,7 @@ public class door1Open : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && playerScript.hasKey1)
         {
             animator.enabled = true;
             //GetComponent<AudioSource>().Play();

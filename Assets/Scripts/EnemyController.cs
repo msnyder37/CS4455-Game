@@ -120,7 +120,7 @@ public class EnemyController : MonoBehaviour
         Shoot();
         if (chasesPlayer) {
             agent.isStopped = false;
-            if(!agent.pathPending) {
+            if(!agent.pathPending && Vector3.Distance(transform.position, player.transform.position) < stoppingDistance / 2) {
                 agent.SetDestination(player.transform.position);
                 agent.speed = chaseSpeed;
             }

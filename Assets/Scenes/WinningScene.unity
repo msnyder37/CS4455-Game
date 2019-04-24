@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 154769282}
   - component: {fileID: 154769281}
   m_Layer: 0
-  m_Name: QUIT GAME
+  m_Name: QUIT to menu text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,15 +140,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 154769279}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 24.732391, y: 10.929339, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -76.3}
+  m_LocalScale: {x: 5.595374, y: 4.1672983, z: 1}
   m_Children: []
-  m_Father: {fileID: 972288967}
-  m_RootOrder: 0
+  m_Father: {fileID: 1127260968}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -31, y: 117}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &154769281
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_textAlignment: 513
+  m_textAlignment: 514
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -249,7 +249,7 @@ MonoBehaviour:
     lineCount: 2
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -391,7 +391,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 848923465}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 270, y: 152, z: 321}
+  m_LocalPosition: {x: 41, y: 152, z: 321}
   m_LocalScale: {x: 2086.8909, y: 1118.87, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -411,12 +411,12 @@ GameObject:
   - component: {fileID: 972288969}
   - component: {fileID: 972288968}
   m_Layer: 5
-  m_Name: Quit Menu
+  m_Name: Quit to Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &972288967
 RectTransform:
   m_ObjectHideFlags: 0
@@ -426,15 +426,14 @@ RectTransform:
   m_GameObject: {fileID: 972288966}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.22623667, y: 0.38129464, z: 1}
-  m_Children:
-  - {fileID: 154769280}
+  m_LocalScale: {x: 0.24936654, y: 0.60038954, z: 1}
+  m_Children: []
   m_Father: {fileID: 1127260968}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 37, y: 18.766}
   m_SizeDelta: {x: 554.4, y: 64.6001}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &972288968
@@ -446,7 +445,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 972288966}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bfc5a7a4aaabca42bb04908b72039d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 25a5e0a40738b944c897e7489929db2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &972288969
@@ -490,7 +489,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 972288968}
-        m_MethodName: ExitGame
+        m_MethodName: LoadMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -757,7 +756,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1108180624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 270, y: 152, z: -623}
+  m_LocalPosition: {x: 270, y: 152, z: -343}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -851,11 +850,13 @@ RectTransform:
   m_GameObject: {fileID: 1127260964}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.2884, y: 1.931, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2003425835}
-  - {fileID: 1992517138}
+  - {fileID: 1548133397}
   - {fileID: 972288967}
+  - {fileID: 154769280}
+  - {fileID: 1992517138}
   - {fileID: 1671809984}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -879,7 +880,7 @@ GameObject:
   - component: {fileID: 1548133399}
   - component: {fileID: 1548133398}
   m_Layer: 0
-  m_Name: QUIT GAME
+  m_Name: QUIT GAME text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -893,15 +894,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1548133396}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 24.732391, y: 10.929339, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -76.3}
+  m_LocalScale: {x: 5.595374, y: 4.1672983, z: 1}
   m_Children: []
-  m_Father: {fileID: 2003425835}
-  m_RootOrder: 0
+  m_Father: {fileID: 1127260968}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -29, y: 50}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1548133398
@@ -958,7 +959,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_textAlignment: 513
+  m_textAlignment: 514
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1000,7 +1001,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -1167,11 +1168,11 @@ RectTransform:
   m_LocalScale: {x: 0.8365131, y: 0.93650955, z: 0.4370187}
   m_Children: []
   m_Father: {fileID: 1127260968}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 16.345, y: 0}
+  m_AnchoredPosition: {x: 16.34497, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1671809985
@@ -1194,7 +1195,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: The space marine successfully managed to use the aliens' teleporter to reutn
+  m_text: The space marine successfully managed to use the aliens' teleporter to return
     back home.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
@@ -1260,10 +1261,10 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: -7.780365, z: -79.24637, w: -147.73022}
+  m_margin: {x: -73.921616, y: -7.780365, z: -79.24637, w: -147.73022}
   m_textInfo:
     textComponent: {fileID: 1671809985}
-    characterCount: 87
+    characterCount: 88
     spriteCount: 0
     spaceCount: 13
     wordCount: 14
@@ -1518,7 +1519,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1127260968}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -1544,7 +1545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2003425835
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1554,15 +1555,14 @@ RectTransform:
   m_GameObject: {fileID: 2003425834}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.22623667, y: 0.38129464, z: 1}
-  m_Children:
-  - {fileID: 1548133397}
+  m_LocalScale: {x: 0.24936654, y: 0.60038954, z: 1}
+  m_Children: []
   m_Father: {fileID: 1127260968}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -54.2}
+  m_AnchoredPosition: {x: 37, y: -69.413}
   m_SizeDelta: {x: 554.4, y: 64.6001}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &2003425836

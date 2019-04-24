@@ -1371,6 +1371,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destructable Box (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 1245250425, guid: fb4d9b547ae94a748a40af30d02733f4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1969482352, guid: fb4d9b547ae94a748a40af30d02733f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.4099998

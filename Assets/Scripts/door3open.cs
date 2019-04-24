@@ -37,6 +37,7 @@ public class door3open : MonoBehaviour
             animator.enabled = true;
             door_open_audio.Play();
             //GetComponent<AudioSource>().Play();
+
         }
         else if (other.gameObject.tag == "Player" && playerScript.hasKey3 == false){
             access_denied_audio.Play();
@@ -45,5 +46,5 @@ public class door3open : MonoBehaviour
         }
     }
 
-    
+
 }

@@ -38,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-    	var newEnemy = Instantiate(enemyType, transform.position, Quaternion.identity);
+    	var newEnemy = Instantiate(enemyType, new Vector3(transform.position.x, player.transform.position.y, transform.position.z), Quaternion.identity);
     	newEnemy.gameObject.GetComponent<EnemyController>().player = player;
     	// newEnemy.GameObject.GetComponent<EnemyController>.chasesSpeed = .05;
     	enemiesSpawned.Add(newEnemy.gameObject);

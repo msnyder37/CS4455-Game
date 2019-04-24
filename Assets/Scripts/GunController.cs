@@ -32,8 +32,8 @@ public class GunController : MonoBehaviour
 
     public void Shoot()
     {
-        if (ammo > 0)
-        {  //Only fire if we have ammo - Bishoy
+        //if (ammo > 0)
+       // {  //Only fire if we have ammo - Bishoy
             if (isFiring)
             {
                 shotClock -= Time.deltaTime;
@@ -62,7 +62,7 @@ public class GunController : MonoBehaviour
             {
                 shotClock = 0;
             }
-        }
+      //  }
 
     }
 

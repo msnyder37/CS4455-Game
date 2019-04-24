@@ -11147,6 +11147,7 @@ MonoBehaviour:
   animator: {fileID: 73443599}
   playerScript: {fileID: 2115590814}
   HintText: {fileID: 54118634}
+  door3Pressed: 0
 --- !u!65 &1011319129
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18842,6 +18843,7 @@ MonoBehaviour:
   animator: {fileID: 1457228194}
   playerScript: {fileID: 2115590814}
   HintText: {fileID: 54118634}
+  bs: {fileID: 0}
 --- !u!65 &1689276180
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24019,6 +24021,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2115590815, guid: 465ebfe9e13a146fa985eb552572d370, type: 3}
+      propertyPath: m_Mass
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2115590810, guid: 465ebfe9e13a146fa985eb552572d370, type: 3}
       propertyPath: healthbar
       value: 
@@ -24030,6 +24036,10 @@ PrefabInstance:
     - target: {fileID: 2115590814, guid: 465ebfe9e13a146fa985eb552572d370, type: 3}
       propertyPath: hasKey1
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115590814, guid: 465ebfe9e13a146fa985eb552572d370, type: 3}
+      propertyPath: jumpForce
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 465ebfe9e13a146fa985eb552572d370, type: 3}

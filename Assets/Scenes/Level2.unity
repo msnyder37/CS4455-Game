@@ -22065,6 +22065,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1293686493936961562, guid: 624cb3899c870e547a6c3d9966932287,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1293686493936961563, guid: 624cb3899c870e547a6c3d9966932287,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -30714,14 +30719,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1964604220}
     m_Modifications:
-    - target: {fileID: 2115590810, guid: 465ebfe9e13a146fa985eb552572d370, type: 3}
-      propertyPath: healthbar
-      value: 
-      objectReference: {fileID: 1297709254}
+    - target: {fileID: 2115590815, guid: 465ebfe9e13a146fa985eb552572d370, type: 3}
+      propertyPath: m_Mass
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2115590814, guid: 465ebfe9e13a146fa985eb552572d370, type: 3}
-      propertyPath: spawn
-      value: 
-      objectReference: {fileID: 1964604219}
+      propertyPath: angleRate
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115590814, guid: 465ebfe9e13a146fa985eb552572d370, type: 3}
+      propertyPath: jumpForce
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 3748902743755919446, guid: 465ebfe9e13a146fa985eb552572d370,
         type: 3}
       propertyPath: m_Name
@@ -33446,6 +33455,12 @@ MonoBehaviour:
   destructibleHealth: 3
   animation: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
   animDuration: 2
+--- !u!4 &2049292677 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2115590806, guid: 465ebfe9e13a146fa985eb552572d370,
+    type: 3}
+  m_PrefabInstance: {fileID: 1895434514}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2052571292
 GameObject:
   m_ObjectHideFlags: 0

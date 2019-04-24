@@ -2706,11 +2706,11 @@ PrefabInstance:
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1895434516}
+      objectReference: {fileID: 0}
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: spawn
       value: 
-      objectReference: {fileID: 1895434515}
+      objectReference: {fileID: 0}
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: patrolPoints.Array.data[0]
       value: 
@@ -4898,11 +4898,11 @@ PrefabInstance:
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1895434516}
+      objectReference: {fileID: 0}
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: spawn
       value: 
-      objectReference: {fileID: 1895434515}
+      objectReference: {fileID: 0}
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: patrolPoints.Array.data[0]
       value: 
@@ -7436,7 +7436,9 @@ MonoBehaviour:
   playerDamageTaken: {fileID: 8300000, guid: f3e4e175d76b91c4fa267b4b7b6b1daf, type: 3}
   playerGunShot: {fileID: 8300000, guid: 047519965ee32db498e244287696fa5d, type: 3}
   playerFalling: {fileID: 0}
+  doorOpening: {fileID: 0}
   enemyRobotDeath: {fileID: 8300000, guid: 997dac06521cc65448d0b18092d83d31, type: 3}
+  enemyRobotGunShot: {fileID: 0}
   eventSound3DPrefab: {fileID: 6469310841504362662, guid: ed1277a7e52294c6e9a9760e1ad8fd71,
     type: 3}
 --- !u!4 &428498041
@@ -10313,11 +10315,11 @@ PrefabInstance:
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1895434516}
+      objectReference: {fileID: 0}
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: spawn
       value: 
-      objectReference: {fileID: 1895434515}
+      objectReference: {fileID: 0}
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: patrolPoints.Array.data[0]
       value: 
@@ -14623,11 +14625,11 @@ PrefabInstance:
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1895434516}
+      objectReference: {fileID: 0}
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: spawn
       value: 
-      objectReference: {fileID: 1895434515}
+      objectReference: {fileID: 0}
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: patrolPoints.Array.data[0]
       value: 
@@ -15513,11 +15515,11 @@ PrefabInstance:
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1895434516}
+      objectReference: {fileID: 0}
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: spawn
       value: 
-      objectReference: {fileID: 1895434515}
+      objectReference: {fileID: 0}
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: patrolPoints.Array.data[0]
       value: 
@@ -16920,7 +16922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 955616143}
-  playerScript: {fileID: 1895434517}
+  playerScript: {fileID: 0}
   HintText: {fileID: 694986316}
 --- !u!65 &1106036966
 BoxCollider:
@@ -20003,11 +20005,11 @@ PrefabInstance:
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1895434516}
+      objectReference: {fileID: 0}
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: spawn
       value: 
-      objectReference: {fileID: 1895434515}
+      objectReference: {fileID: 0}
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: patrolPoints.Array.data[0]
       value: 
@@ -21230,6 +21232,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1293686493936961562, guid: 624cb3899c870e547a6c3d9966932287,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1293686493936961563, guid: 624cb3899c870e547a6c3d9966932287,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21288,11 +21295,11 @@ PrefabInstance:
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1895434516}
+      objectReference: {fileID: 0}
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: spawn
       value: 
-      objectReference: {fileID: 1895434515}
+      objectReference: {fileID: 0}
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: patrolPoints.Array.data[0]
       value: 
@@ -22428,11 +22435,11 @@ PrefabInstance:
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1895434516}
+      objectReference: {fileID: 0}
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: spawn
       value: 
-      objectReference: {fileID: 1895434515}
+      objectReference: {fileID: 0}
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: patrolPoints.Array.data[0]
       value: 
@@ -23816,11 +23823,11 @@ PrefabInstance:
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1895434516}
+      objectReference: {fileID: 0}
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: spawn
       value: 
-      objectReference: {fileID: 1895434515}
+      objectReference: {fileID: 0}
     - target: {fileID: 358219160, guid: 624cb3899c870e547a6c3d9966932287, type: 3}
       propertyPath: patrolPoints.Array.data[0]
       value: 
@@ -24880,7 +24887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 416489358}
-  playerScript: {fileID: 1895434517}
+  playerScript: {fileID: 0}
   HintText: {fileID: 694986316}
   bs: {fileID: 0}
 --- !u!65 &1545857815
@@ -29073,6 +29080,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1964604220}
     m_Modifications:
+    - target: {fileID: 2115590815, guid: 465ebfe9e13a146fa985eb552572d370, type: 3}
+      propertyPath: m_Mass
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115590814, guid: 465ebfe9e13a146fa985eb552572d370, type: 3}
+      propertyPath: angleRate
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115590814, guid: 465ebfe9e13a146fa985eb552572d370, type: 3}
+      propertyPath: jumpForce
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 3748902743755919446, guid: 465ebfe9e13a146fa985eb552572d370,
         type: 3}
       propertyPath: m_Name
@@ -29396,140 +29415,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3748902743307442095, guid: 465ebfe9e13a146fa985eb552572d370, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 465ebfe9e13a146fa985eb552572d370, type: 3}
---- !u!4 &1895434515 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3748902743755919443, guid: 465ebfe9e13a146fa985eb552572d370,
-    type: 3}
-  m_PrefabInstance: {fileID: 1895434514}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1895434516 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3748902743755919446, guid: 465ebfe9e13a146fa985eb552572d370,
-    type: 3}
-  m_PrefabInstance: {fileID: 1895434514}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1895434517 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3748902743755919445, guid: 465ebfe9e13a146fa985eb552572d370,
-    type: 3}
-  m_PrefabInstance: {fileID: 1895434514}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1895434516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e9017b26818d4cd29d129d4e5de0d9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1895434518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1895434516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b823e4e42242662478f8491f92b43b84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health_player: 1
-  healthbar: {fileID: 1297709254}
---- !u!82 &1895434519
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1895434516}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e66ace8512c10c5478d53e96ac970e5a, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.3
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &1899298979
 GameObject:
   m_ObjectHideFlags: 0
@@ -29961,6 +29846,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eeb30e3b0c4554f95c619a7319d530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  playerScript: {fileID: 0}
+  HintText: {fileID: 0}
   door3Pressed: 0
 --- !u!65 &1915146190
 BoxCollider:
@@ -30996,7 +30884,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1970889224}
-  - {fileID: 1895434515}
+  - {fileID: 2049292677}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -31168,7 +31056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1045a403af3f3449beb89684864fbf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1895434516}
+  player: {fileID: 0}
   fixedCamera: {fileID: 0}
   fixedCameraBool: 0
   exitingFixedCamera: 0
@@ -31928,6 +31816,12 @@ MonoBehaviour:
   destructibleHealth: 3
   animation: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
   animDuration: 2
+--- !u!4 &2049292677 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2115590806, guid: 465ebfe9e13a146fa985eb552572d370,
+    type: 3}
+  m_PrefabInstance: {fileID: 1895434514}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2052571292
 GameObject:
   m_ObjectHideFlags: 0
@@ -33064,6 +32958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage_amount: 0.3
+  cooldown: 2
 --- !u!65 &2129090657
 BoxCollider:
   m_ObjectHideFlags: 0

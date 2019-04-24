@@ -33,7 +33,7 @@ public class RobotHeroController : MonoBehaviour
         this.capsuleCollider = this.GetComponent<CapsuleCollider>();
         this.rb = this.GetComponent<Rigidbody>();
 
-        this.distanceToGround = this.hipBone.transform.position.y;
+        this.distanceToGround = this.capsuleCollider.bounds.extents.y;
         this.rifleController = null;
 
         this.hasKey1 = false;
@@ -86,22 +86,11 @@ public class RobotHeroController : MonoBehaviour
         {
             // robot jumps
             this.rb.AddForce(Vector3.up * this.jumpForce, ForceMode.Impulse);
+            this.animator.SetTrigger("Jump");
         }
 
-        float forward = Input.GetAxisRaw("Vertical");
-        float turn = Input.GetAxisRaw("Horizontal");
-
-        float angleInput = Mathf.Atan2(turn, forward);
-        float angleRobot = this.transform.rotation.eulerAngles.y * Mathf.Deg2Rad;
-        float inputMagnitude = Vector3.Magnitude(new Vector3(forward, turn, 0));
-
-        // perform input projection
-        forward = inputMagnitude * Mathf.Cos(angleRobot - angleInput);
-        turn = -1.0f * inputMagnitude * Mathf.Sin(angleRobot - angleInput);
-
-        this.animator.SetFloat("Forward", forward);
-        this.animator.SetFloat("Turn", turn);
-
+        this.animator.SetBool("IsGrounded", this.IsGrounded());
+        this.TranslationInputHandler();
         this.RotationInputHandler();
     }
 
@@ -158,6 +147,32 @@ public class RobotHeroController : MonoBehaviour
             case "Moving Platform":
                 transform.SetParent(null);
                 break;
+        }
+    }
+
+    private void TranslationInputHandler()
+    {
+        Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+
+        float forward = Vector3.Dot(input, this.transform.forward);
+        float turn = Vector3.Dot(input, this.transform.right);
+
+        if (this.IsGrounded())
+        {
+            // not jumping
+            input = new Vector3(turn, 0, forward);
+            input = Vector3.Normalize(input);
+
+            forward = input.z;
+            turn = input.x;
+
+            this.animator.SetFloat("Forward", forward);
+            this.animator.SetFloat("Turn", turn);
+        }
+        else
+        {
+            // in the air for a jump
+            this.transform.Translate(input * Time.deltaTime * this.rb.mass, Space.World);
         }
     }
 
@@ -218,7 +233,7 @@ public class RobotHeroController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics.Raycast(this.hipBone.position, Vector3.down, this.distanceToGround + 0.1f);
+        return Physics.Raycast(this.capsuleCollider.bounds.center, Vector3.down, this.distanceToGround + 0.1f);
     }
 
     private bool UsingController()

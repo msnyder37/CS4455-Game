@@ -16,11 +16,12 @@ public class door2open : MonoBehaviour
     AudioSource door_open_audio;
     AudioSource access_denied_audio;
 
-    void Start(){
+    void Start()
+    {
         HintText.text = "";
         HintText.color = Color.red;
         TextVisible = false;
-        timer = 1f;
+        timer = 6f;
         AudioSource[] audios = GetComponents<AudioSource>();
         door_open_audio = audios[0];
         access_denied_audio = audios[1];
@@ -35,19 +36,23 @@ public class door2open : MonoBehaviour
             door_open_audio.Play();
             //GetComponent<AudioSource>().Play();
         }
-        else if (other.gameObject.tag == "Player" && playerScript.hasKey2 == false){
+        else if (other.gameObject.tag == "Player" && playerScript.hasKey2 == false)
+        {
             access_denied_audio.Play();
-            //TextVisible = true;
-            //HintText.text = "Access Denied";
+            TextVisible = true;
+            HintText.text = "Access Denied. Must have key-card.";
         }
     }
 
-    void Update(){
-        if (TextVisible == true){
+    void Update()
+    {
+        if (TextVisible == true)
+        {
             timer -= Time.deltaTime;
         }
 
-        if (timer <= 0 && TextVisible == true){
+        if (timer <= 0 && TextVisible == true)
+        {
             TextVisible = false;
             HintText.text = "";
             timer = 6f;

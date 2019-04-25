@@ -657,7 +657,7 @@ RectTransform:
   m_GameObject: {fileID: 54118631}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 930206562}
   m_RootOrder: 3
@@ -665,7 +665,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 100}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 600, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &54118634
 MonoBehaviour:
@@ -680,7 +680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.17254902, g: 0.32941177, b: 0.16078432, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -689,10 +689,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 9
+    m_FontSize: 24
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -2700,6 +2700,29 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2115590809}
+    - target: {fileID: 6910142599719617695, guid: 7023cf682a5f26447b266834fd76f909,
+        type: 3}
+      propertyPath: enemyType
+      value: 
+      objectReference: {fileID: 3070002617525920671, guid: 1b152c28f7d184bd4bef85aafdf302c4,
+        type: 3}
+    - target: {fileID: 6910142599719617695, guid: 7023cf682a5f26447b266834fd76f909,
+        type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 3070002617525920676, guid: 1b152c28f7d184bd4bef85aafdf302c4,
+        type: 3}
+    - target: {fileID: 6910142599719617695, guid: 7023cf682a5f26447b266834fd76f909,
+        type: 3}
+      propertyPath: exposionEffect
+      value: 
+      objectReference: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9,
+        type: 3}
+    - target: {fileID: 6910142599719617692, guid: 7023cf682a5f26447b266834fd76f909,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7023cf682a5f26447b266834fd76f909, type: 3}
 --- !u!1001 &273599208
@@ -22925,6 +22948,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawner (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6910142599719617689, guid: 7023cf682a5f26447b266834fd76f909,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6910142599719617694, guid: 7023cf682a5f26447b266834fd76f909,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23005,6 +23033,23 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2115590809}
+    - target: {fileID: 6910142599719617695, guid: 7023cf682a5f26447b266834fd76f909,
+        type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 3070002617525920676, guid: 1b152c28f7d184bd4bef85aafdf302c4,
+        type: 3}
+    - target: {fileID: 6910142599719617695, guid: 7023cf682a5f26447b266834fd76f909,
+        type: 3}
+      propertyPath: exposionEffect
+      value: 
+      objectReference: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9,
+        type: 3}
+    - target: {fileID: 6910142599719617692, guid: 7023cf682a5f26447b266834fd76f909,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7023cf682a5f26447b266834fd76f909, type: 3}
 --- !u!1 &2043968639

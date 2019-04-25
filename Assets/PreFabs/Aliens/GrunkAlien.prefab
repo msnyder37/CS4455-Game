@@ -10135,10 +10135,7 @@ MonoBehaviour:
   player: {fileID: 0}
   spawn: {fileID: 0}
   gunOrigin: {fileID: 3070002616675341431}
-  patrolPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  patrolPoints: []
   agent: {fileID: 3070002617525920677}
   health: 5
   animation: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9, type: 3}

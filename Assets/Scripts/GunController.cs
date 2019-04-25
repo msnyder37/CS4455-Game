@@ -17,52 +17,52 @@ public class GunController : MonoBehaviour
 
     //Ammo Tracking and Display - Bishoy
     public int ammo = 100;
-    public Text ammoDisplay;
+    //public Text ammoDisplay;
 
     void Start()
     {
-        this.ammoDisplay = GameObject.Find("Ammo").GetComponent<Text>();
+        //this.ammoDisplay = GameObject.Find("Ammo").GetComponent<Text>();
     }
 
     //Display ammo for HUD - Bishoy
     void Update()
     {
-        ammoDisplay.text = ammo.ToString();
+        //ammoDisplay.text = ammo.ToString();
     }
 
     public void Shoot()
     {
         //if (ammo > 0)
-       // {  //Only fire if we have ammo - Bishoy
-            if (isFiring)
+        // {  //Only fire if we have ammo - Bishoy
+        if (isFiring)
+        {
+            shotClock -= Time.deltaTime;
+            if (shotClock <= 0)
             {
-                shotClock -= Time.deltaTime;
-                if (shotClock <= 0)
-                {
-                    shotClock = cooldown;
+                shotClock = cooldown;
 
-                    //Ray ray = new Ray(spawn.position, spawn.forward);
-                    //RaycastHit hit;
+                //Ray ray = new Ray(spawn.position, spawn.forward);
+                //RaycastHit hit;
 
-                    //float shootDistance = 20.0f;
+                //float shootDistance = 20.0f;
 
-                    //if (Physics.Raycast(ray, out hit, shootDistance)) {
-                    //	shootDistance = hit.distance;
-                    //}
+                //if (Physics.Raycast(ray, out hit, shootDistance)) {
+                //	shootDistance = hit.distance;
+                //}
 
-                    //Debug.DrawRay(ray.origin, ray.direction * shootDistance, Color.red, 1);
-                    BulletController nb = Instantiate(bullet, spawn.position, Quaternion.Euler(0, spawn.rotation.eulerAngles.y, spawn.rotation.eulerAngles.z)) as BulletController;
-                    nb.speed = speed;
+                //Debug.DrawRay(ray.origin, ray.direction * shootDistance, Color.red, 1);
+                BulletController nb = Instantiate(bullet, spawn.position, Quaternion.Euler(0, spawn.rotation.eulerAngles.y, spawn.rotation.eulerAngles.z)) as BulletController;
+                nb.speed = speed;
 
-                    //Keep track of ammo - Bishoy
-                    ammo--;
-                }
+                //Keep track of ammo - Bishoy
+                ammo--;
             }
-            else
-            {
-                shotClock = 0;
-            }
-      //  }
+        }
+        else
+        {
+            shotClock = 0;
+        }
+        //  }
 
     }
 

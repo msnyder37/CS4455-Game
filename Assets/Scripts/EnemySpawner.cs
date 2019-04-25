@@ -4,44 +4,48 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-	public int maxEnemies;
-	public float cooldown;
-	public int health;
-	public float animDuration;
-	public Transform enemyType;
-	public GameObject player;
-	public GameObject animation;
+    public int maxEnemies;
+    public float cooldown;
+    public int health;
+    public float animDuration;
 
-	private float counter;
-	private List<GameObject> enemiesSpawned;
+    public EnemyController enemyPrefab;
+    public GameObject player;
+    public GameObject exposionEffect;
+
+    private float counter;
+    private List<EnemyController> spawnedEnemies;
+
     // Start is called before the first frame update
     void Start()
     {
-    	enemiesSpawned = new List<GameObject>();
+        this.spawnedEnemies = new List<EnemyController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-    	if (counter <= 0 && enemiesSpawned.Count < maxEnemies) {
-    		SpawnEnemy();
-    		counter = cooldown;
-    	} else {
-    		counter -= Time.deltaTime;
-    	}
-    	foreach (GameObject g in enemiesSpawned) {
-    		if (g == null) {
-    			enemiesSpawned.Remove(g);
-    		}
-    	}
+        if (counter <= 0 && spawnedEnemies.Count < maxEnemies)
+        {
+            this.SpawnEnemy();
+            counter = cooldown;
+        }
+        else
+        {
+            counter -= Time.deltaTime;
+        }
+
+        // remove defeated enemies from the spawned list to spawn another
+        spawnedEnemies.RemoveAll(enemy => enemy == null);
     }
 
     void SpawnEnemy()
     {
-    	var newEnemy = Instantiate(enemyType, new Vector3(transform.position.x, player.transform.position.y, transform.position.z), Quaternion.identity);
-    	newEnemy.gameObject.GetComponent<EnemyController>().player = player;
-    	// newEnemy.GameObject.GetComponent<EnemyController>.chasesSpeed = .05;
-    	enemiesSpawned.Add(newEnemy.gameObject);
+        Vector3 spawnPoint = new Vector3(transform.position.x, player.transform.position.y, transform.position.z);
+        EnemyController enemy = Instantiate(this.enemyPrefab, spawnPoint, Quaternion.identity) as EnemyController;
+        enemy.player = this.player;
+        enemy.isWandering = true;
+        this.spawnedEnemies.Add(enemy);
     }
 
     void OnTriggerEnter(Collider c)
@@ -53,10 +57,9 @@ public class EnemySpawner : MonoBehaviour
             health--;
             if (health <= 0)
             {
-                GameObject obj = Instantiate(animation, transform.position, transform.rotation);
+                GameObject obj = Instantiate(exposionEffect, transform.position, transform.rotation);
                 Destroy(transform.gameObject);
                 Destroy(obj, animDuration);
-
             }
         }
 

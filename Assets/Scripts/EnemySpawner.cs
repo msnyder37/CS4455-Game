@@ -58,6 +58,7 @@ public class EnemySpawner : MonoBehaviour
             if (health <= 0)
             {
                 GameObject obj = Instantiate(exposionEffect, transform.position, transform.rotation);
+                AudioSource.PlayClipAtPoint(GetComponent<AudioSource>().clip, GameObject.Find("Main Camera").transform.position);
                 Destroy(transform.gameObject);
                 Destroy(obj, animDuration);
             }

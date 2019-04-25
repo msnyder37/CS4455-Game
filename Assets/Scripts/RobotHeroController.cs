@@ -7,8 +7,8 @@ public class RobotHeroController : MonoBehaviour
     public GameObject rifle;
     public Transform rifleBone;
     public Transform hipBone;
-    public float angleRate = 2.5f;
-    public float jumpForce = 11.5f;
+    public float angleRate = 15f;
+    public float jumpForce = 30f;
     public GameObject spawn;
 
     private Animator animator;

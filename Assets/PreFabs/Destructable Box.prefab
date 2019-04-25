@@ -124,7 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destructibleHealth: 3
   animation: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
-  animDuration: 2
+  animDuration: 1.8
 --- !u!82 &2791975812213232528
 AudioSource:
   m_ObjectHideFlags: 0

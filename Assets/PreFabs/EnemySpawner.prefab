@@ -108,8 +108,7 @@ MonoBehaviour:
   maxEnemies: 3
   cooldown: 8
   health: 10
-  animDuration: 2
-  enemyType: {fileID: 3977033765842128428, guid: bb33905a579eb4b4db3fb34ffff1faa5,
-    type: 3}
+  animDuration: 1.8
+  enemyPrefab: {fileID: 0}
   player: {fileID: 0}
-  animation: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
+  exposionEffect: {fileID: 0}

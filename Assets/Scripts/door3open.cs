@@ -22,7 +22,7 @@ public class door3open : MonoBehaviour
         HintText.text = "";
         HintText.color = Color.red;
         TextVisible = false;
-        timer = 6f;
+        timer = 1.5f;
         AudioSource[] audios = GetComponents<AudioSource>();
         door_open_audio = audios[0];
         access_denied_audio = audios[1];
